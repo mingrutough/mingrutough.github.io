@@ -1,0 +1,71 @@
+header.intro-header {
+    /*height: 400px;*/
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    /*background-position: 0 -200px;*/
+}
+/*header.intro-header .container{
+    height: 400px;
+}*/
+#tag-heading{
+    padding: 150px 0px;
+}
+.about-wrap .header-wrap .back-img-wrap{
+    width: 100%;
+    height: 198px;
+    background-image: url(http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/head-back-img.svg);
+}
+@media screen and (max-width: 500px) {
+    .about-wrap .header-wrap .back-img-wrap {
+        height:0px;
+    }
+}
+.about-wrap .info-wrap .circle-wrap{
+    background-color: rgba(243,246,248,.94);
+    border: 4px solid #fff;
+    box-shadow: inset 0 1.5px 3px 0 rgba(0,0,0,.15), 0 1.5px 3px 0 rgba(0,0,0,.15);
+    box-sizing: content-box;
+    width: 128px;
+    height: 128px;    
+    border-radius: 50%;
+    position: relative;
+    margin: -64px auto 0;
+}
+.about-wrap .info-wrap .circle-wrap img{
+    width: 128px;
+    height: 128px;    
+    border-radius: 50%;
+    position: relative;
+    margin: 0;
+}
+.about-wrap .info-wrap .details-wrap .name{
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.about-wrap .info-wrap .details-wrap .education{
+    display:flex;
+    margin-left: 10px;
+}
+.about-wrap .info-wrap .details-wrap .education img{
+    width: 72px;
+    height: 72px;
+    margin: 0 20px 0 0;
+}
+.about-wrap .info-wrap .details-wrap .education .school-time{
+    font-size: 12px;
+    height: 36px;
+    line-height: 36px;
+}
+.about-wrap .info-wrap .details-wrap .education .school-name{
+    height: 36px;
+    line-height: 36px;
+}
+.about-wrap .info-wrap .details-wrap .education .border-bottom{
+    border-bottom: 1px solid #f0f0f0;
+}
+.about-wrap .info-wrap .details-wrap .education .study-details{
+    padding-right: 100px;
+}
