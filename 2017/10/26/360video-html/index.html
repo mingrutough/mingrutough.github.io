@@ -99,14 +99,14 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -212,7 +212,8 @@
 </ul>
 <h4 id="3-XHTML"><a href="#3-XHTML" class="headerlink" title="3.XHTML"></a>3.XHTML</h4><ul>
 <li>用XML语法重新定义HTML</li>
-<li>语法要求严格。<br>之后XHTML2.0版本过于激进，问题多，不好用，以至于项目关闭。</li>
+<li>语法要求严格。 
+之后XHTML2.0版本过于激进，问题多，不好用，以至于项目关闭。</li>
 </ul>
 <h4 id="4-HTML5设计思想"><a href="#4-HTML5设计思想" class="headerlink" title="4.HTML5设计思想"></a>4.HTML5设计思想</h4><ul>
 <li>兼容已有内容</li>
@@ -247,7 +248,8 @@
 <li>展示代码一般用 &lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;以顺利保留标签内文本格式。</li>
 <li>&lt;figure&gt; 里面经常用于例如论文中的插图。</li>
 </ul>
-<h4 id="9-网页总体结构"><a href="#9-网页总体结构" class="headerlink" title="9.网页总体结构"></a>9.网页总体结构</h4><p><img src="http://note.youdao.com/yws/res/3964/WEBRESOURCEfa20469e9fc5eab1b511e56c906aba35" alt=""></p>
+<h4 id="9-网页总体结构"><a href="#9-网页总体结构" class="headerlink" title="9.网页总体结构"></a>9.网页总体结构</h4><img title="网页总体结构" alt="网页总体结构" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/page-structure.png">
+<!--<img src="http://note.youdao.com/yws/res/3964/WEBRESOURCEfa20469e9fc5eab1b511e56c906aba35" alt="">-->
 <h4 id="10-强调"><a href="#10-强调" class="headerlink" title="10.强调"></a>10.强调</h4><ul>
 <li>strong: 重要性、严重性和紧急性</li>
 <li>em: 从一句话中突出某个词语</li>
@@ -261,7 +263,8 @@
 <h4 id="11-实体-entity-字符"><a href="#11-实体-entity-字符" class="headerlink" title="11.实体(entity)字符"></a>11.实体(entity)字符</h4><ul>
 <li>空格 ‘&amp;nbsp’;</li>
 <li>&lt; 小于号 ‘&amp;lt’;</li>
-<li>&gt; 大于号 ‘&amp;gt’;<br>…………</li>
+<li>&gt; 大于号 ‘&amp;gt’;
+…………</li>
 </ul>
 <h2 id="链接与图片"><a href="#链接与图片" class="headerlink" title="链接与图片"></a>链接与图片</h2><h4 id="1-lt-a-href-””-gt-查看图片-lt-a-gt"><a href="#1-lt-a-href-””-gt-查看图片-lt-a-gt" class="headerlink" title="1.&lt;a href=””&gt;查看图片&lt;/a&gt;"></a>1.&lt;a href=””&gt;查看图片&lt;/a&gt;</h4><ul>
 <li>href指定的url可以省略协议和host，省略之后协议及host与页面当前的协议保持一致。</li>
@@ -269,7 +272,8 @@
 </ul>
 <h4 id="2-页面内锚点"><a href="#2-页面内锚点" class="headerlink" title="2.页面内锚点"></a>2.页面内锚点</h4><ul>
 <li>href = “#” 会回到页面顶部，</li>
-<li>href = “#haha” 页面会滚动到id 名为haha的元素位置。<br>通过页面内的锚点设置跳转到相关元素非常方便。</li>
+<li>href = “#haha” 页面会滚动到id 名为haha的元素位置。
+通过页面内的锚点设置跳转到相关元素非常方便。</li>
 </ul>
 <h4 id="3-a标签中的target属性"><a href="#3-a标签中的target属性" class="headerlink" title="3.a标签中的target属性"></a>3.a标签中的target属性</h4><p>可通过target属性控制链接打开的方式。默认是在当前窗口。</p>
 <ul>
@@ -416,8 +420,39 @@ select（下拉框）
 button
 
 &lt;button type=&quot;submit&quot;&gt;&lt;/button&gt;
-</code></pre><h2 id="HTML扩展知识"><a href="#HTML扩展知识" class="headerlink" title="HTML扩展知识"></a>HTML扩展知识</h2><h4 id="1-accesskey-amp-tabindex"><a href="#1-accesskey-amp-tabindex" class="headerlink" title="1.accesskey &amp; tabindex"></a>1.accesskey &amp; tabindex</h4><p>accesskey 全局属性提供了能为当前元素生成快捷键的方式。这个属性是由空格分隔的字符（单个 Unicode 代码点）列表组成。浏览器使用存在于计算机键盘布局的第一个字符。<br><br>&lt;input accesskey=”i” &gt;</p>
-<table><br>    <th><br>        </th><td>Windows</td><br>        <td>Linux</td><br>        <td>Mac</td><br>    <br>    <tr><br>        <td rowspan="2">Firefox</td><br>        <td colspan="2">Alt + Shift + key</td><br>        <td>On Firefox 14 or newer, Control + Alt + keyOn Firefox 13 or older, Control + key</td><br>    </tr><br>    <tr><br>        <td>Internet Explorer</td><br>        <td>Alt + key</td><br>        <td colspan="2">N/A </td><br>    </tr><br>    <tr><br>        <td>Google Chrome</td><br>        <td colspan="2">Alt + key</td><br>        <td>Control + Alt + key</td><br>    </tr><br>    <tr><br>        <td>Safari</td><br>        <td>Alt + key</td><br>        <td>N/A</td><br>        <td>Control + Alt + key</td><br>    </tr><br>    <tr><br>        <td>Opera</td><br>        <td colspan="3">Shift + Esc opens a contents list which are accessible by accesskey, then, can choose an item by pressing key  </td><br>    </tr><br></table>
+</code></pre><h2 id="HTML扩展知识"><a href="#HTML扩展知识" class="headerlink" title="HTML扩展知识"></a>HTML扩展知识</h2><h4 id="1-accesskey-amp-tabindex"><a href="#1-accesskey-amp-tabindex" class="headerlink" title="1.accesskey &amp; tabindex"></a>1.accesskey &amp; tabindex</h4><p>accesskey 全局属性提供了能为当前元素生成快捷键的方式。这个属性是由空格分隔的字符（单个 Unicode 代码点）列表组成。浏览器使用存在于计算机键盘布局的第一个字符。<br>
+&lt;input accesskey=”i” &gt;</p>
+<table>
+    <th>
+        </th><td>Windows</td>
+        <td>Linux</td>
+        <td>Mac</td>
+    
+    <tr>
+        <td rowspan="2">Firefox</td>
+        <td colspan="2">Alt + Shift + key</td>
+        <td>On Firefox 14 or newer, Control + Alt + keyOn Firefox 13 or older, Control + key</td>
+    </tr>
+    <tr>
+        <td>Internet Explorer</td>
+        <td>Alt + key</td><br>        <td colspan="2">N/A </td>
+    </tr>
+    <tr>
+        <td>Google Chrome</td>
+        <td colspan="2">Alt + key</td>
+        <td>Control + Alt + key</td>
+    </tr>
+    <tr>
+        <td>Safari</td>
+        <td>Alt + key</td>
+        <td>N/A</td>
+        <td>Control + Alt + key</td>
+    </tr>
+    <tr>
+        <td>Opera</td>
+        <td colspan="3">Shift + Esc opens a contents list which are accessible by accesskey, then, can choose an item by pressing key  </td>
+    </tr>
+</table>
 
 <p>tabindex 全局属性 是个整数，表示元素（如果可聚焦）是否能够接受输入焦点。 如果它应该参与键盘序列导航，那么就是它的位置。它可以设为多种值：</p>
 <ul>
@@ -431,11 +466,18 @@ button
 <li>class多用在CSS</li>
 <li>style指定内联样式</li>
 </ul>
-<h4 id="3-contenteditable-amp-spellcheck"><a href="#3-contenteditable-amp-spellcheck" class="headerlink" title="3.contenteditable &amp;  spellcheck"></a>3.contenteditable &amp;  spellcheck</h4><p>&lt;section<br> contenteditable<br> spellcheck=”true”<br>&gt;夏明儒好帅&lt;/section&gt;</p>
+<h4 id="3-contenteditable-amp-spellcheck"><a href="#3-contenteditable-amp-spellcheck" class="headerlink" title="3.contenteditable &amp;  spellcheck"></a>3.contenteditable &amp;  spellcheck</h4><p>&lt;section 
+ contenteditable
+ spellcheck=”true”
+&gt;夏明儒好帅&lt;/section&gt;</p>
 <p>这样的话，生成的html在页面上是可编辑的。</p>
-<h4 id="4-语言lang-amp-dir"><a href="#4-语言lang-amp-dir" class="headerlink" title="4.语言lang &amp; dir"></a>4.语言lang &amp; dir</h4><p>&lt;div lang=”zh-CN”&gt; 可以让开发者识别页面的语言，应用场景比如用插件来翻译页面。<br>&lt;p dir=”rtl” lang=”ar”&gt;<br>dir 指定的是语言书写的方向。比如说阿拉伯语就是从右向左书写的。</p>
-<h4 id="5-title属性"><a href="#5-title属性" class="headerlink" title="5.title属性"></a>5.title属性</h4><p>当鼠标悬浮到该元素时，浏览器会显示title的内容。<br>&lt;abbr title=”…”&gt;&lt;/abbr&gt;</p>
-<h4 id="6-hidden属性"><a href="#6-hidden属性" class="headerlink" title="6.hidden属性"></a>6.hidden属性</h4><p>&lt;p hidden&gt;&lt;/p&gt;<br>可直接隐藏元素。比设置display: none可用性强。</p>
+<h4 id="4-语言lang-amp-dir"><a href="#4-语言lang-amp-dir" class="headerlink" title="4.语言lang &amp; dir"></a>4.语言lang &amp; dir</h4><p>&lt;div lang=”zh-CN”&gt; 可以让开发者识别页面的语言，应用场景比如用插件来翻译页面。
+&lt;p dir=”rtl” lang=”ar”&gt;
+dir 指定的是语言书写的方向。比如说阿拉伯语就是从右向左书写的。</p>
+<h4 id="5-title属性"><a href="#5-title属性" class="headerlink" title="5.title属性"></a>5.title属性</h4><p>当鼠标悬浮到该元素时，浏览器会显示title的内容。
+&lt;abbr title=”…”&gt;&lt;/abbr&gt;</p>
+<h4 id="6-hidden属性"><a href="#6-hidden属性" class="headerlink" title="6.hidden属性"></a>6.hidden属性</h4><p>&lt;p hidden&gt;&lt;/p&gt;
+可直接隐藏元素。比设置display: none可用性强。</p>
 <h4 id="7-无障碍性。"><a href="#7-无障碍性。" class="headerlink" title="7.无障碍性。"></a>7.无障碍性。</h4><p>提升无障碍性：</p>
 <ul>
 <li>为img提供alt属性</li>
@@ -448,8 +490,10 @@ button
 <li>HTML中的元素、属性及属性值都拥有某些含义</li>
 <li>开发者应该遵循语义来编写HTML</li>
 </ul>
-<h4 id="9-meta标签"><a href="#9-meta标签" class="headerlink" title="9.meta标签"></a>9.meta标签</h4><p>描述页面的元信息以及设置一些功能。<br><img src="http://note.youdao.com/yws/res/4250/WEBRESOURCE4e6502406090f995668358f9b98b9425" alt=""></p>
-<h4 id="10-data"><a href="#10-data" class="headerlink" title="10.data-*"></a>10.data-*</h4><p>&lt;div data-id=”1”&gt;&lt;/div&gt;<br>标签的dataset 属性可以获取设置的data-id；</p>
+<h4 id="9-meta标签"><a href="#9-meta标签" class="headerlink" title="9.meta标签"></a>9.meta标签</h4><p>描述页面的元信息以及设置一些功能。
+<img src="http://note.youdao.com/yws/res/4250/WEBRESOURCE4e6502406090f995668358f9b98b9425" alt=""></p>
+<h4 id="10-data"><a href="#10-data" class="headerlink" title="10.data-*"></a>10.data-*</h4><p>&lt;div data-id=”1”&gt;&lt;/div&gt;
+标签的dataset 属性可以获取设置的data-id；</p>
 
 
                 <hr>
@@ -676,7 +720,7 @@ button
 
 
 <!-- Image to hack wechat -->
-<img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0" />
+<!--<img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0" />-->
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

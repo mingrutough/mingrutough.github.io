@@ -99,14 +99,14 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -202,24 +202,36 @@
 <p>备注：360弄的一个前端特训营课程，内容详实，收获多多。</p>
 </blockquote>
 <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h4 id="使用CSS"><a href="#使用CSS" class="headerlink" title="使用CSS"></a>使用CSS</h4><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!--外链--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">""</span> <span class="attr">href</span>=<span class="string">"/path/to/style.css"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--嵌入--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    li&#123;&#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--内联--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin: 0"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h4><p> CSS属性选择器通过已经存在的属性名或属性值匹配元素。<br> <figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/* &lt;a&gt; elements with a title attribute */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[title]</span> &#123;</div><div class="line"><span class="attribute">color</span>: purple;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* &lt;a&gt; elements with an href matching "https://example.org" */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href="https://example.org"]</span> &#123;</div><div class="line"><span class="attribute">color</span>: green;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* &lt;a&gt; elements with an href containing "example" */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href*="example"]</span> &#123;</div><div class="line"><span class="attribute">font-size</span>: <span class="number">2em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* &lt;a&gt; elements with an href ending ".org" */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href$=".org"]</span> &#123;</div><div class="line"><span class="attribute">font-style</span>: italic;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h4><p> CSS属性选择器通过已经存在的属性名或属性值匹配元素。
+ <figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/* &lt;a&gt; elements with a title attribute */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[title]</span> &#123;</div><div class="line"><span class="attribute">color</span>: purple;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* &lt;a&gt; elements with an href matching "https://example.org" */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href="https://example.org"]</span> &#123;</div><div class="line"><span class="attribute">color</span>: green;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* &lt;a&gt; elements with an href containing "example" */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href*="example"]</span> &#123;</div><div class="line"><span class="attribute">font-size</span>: <span class="number">2em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* &lt;a&gt; elements with an href ending ".org" */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href$=".org"]</span> &#123;</div><div class="line"><span class="attribute">font-style</span>: italic;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
-<li>[attr]<br>表示带有以 attr 命名的属性的元素。</li>
-<li>[attr=value]<br>表示带有以 attr 命名的，且值为”value”的属性的元素。</li>
-<li>[attr~=value]<br>表示带有以 attr 命名的属性的元素，并且该属性是一个以空格作为分隔的值列表，其中至少一个值为”value”。</li>
-<li>[attr|=value]<br>表示带有以 attr 命名的属性的元素，属性值为“value”或是以“value-”为前缀（”-“为连字符，Unicode编码为U+002D）开头。典型的应用场景是用来来匹配语言简写代码（如zh-CN，zh-TW可以用zh作为value）。</li>
-<li>[attr^=value]<br>表示带有以 attr 命名的，且值是以”value”开头的属性的元素。</li>
-<li>[attr$=value]<br>表示带有以 attr 命名的，且值是以”value”结尾的属性的元素。</li>
-<li>[attr*=value]<br>表示带有以 attr 命名的，且值包含有”value”的属性的元素。</li>
-<li>[attr operator value i]<br>在带有属性值的属性选型选择器表达式的右括号（]括号）前添加用空格间隔开的字母i（或I）可以忽略属性值的大小写（ASCII字符范围内的字母）</li>
+<li>[attr]
+表示带有以 attr 命名的属性的元素。</li>
+<li>[attr=value]
+表示带有以 attr 命名的，且值为”value”的属性的元素。</li>
+<li>[attr~=value]
+表示带有以 attr 命名的属性的元素，并且该属性是一个以空格作为分隔的值列表，其中至少一个值为”value”。</li>
+<li>[attr|=value]
+表示带有以 attr 命名的属性的元素，属性值为“value”或是以“value-”为前缀（”-“为连字符，Unicode编码为U+002D）开头。典型的应用场景是用来来匹配语言简写代码（如zh-CN，zh-TW可以用zh作为value）。</li>
+<li>[attr^=value]
+表示带有以 attr 命名的，且值是以”value”开头的属性的元素。</li>
+<li>[attr$=value]
+表示带有以 attr 命名的，且值是以”value”结尾的属性的元素。</li>
+<li>[attr*=value]
+表示带有以 attr 命名的，且值包含有”value”的属性的元素。</li>
+<li>[attr operator value i]
+在带有属性值的属性选型选择器表达式的右括号（]括号）前添加用空格间隔开的字母i（或I）可以忽略属性值的大小写（ASCII字符范围内的字母）</li>
 </ul>
 <h4 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h4><p>CSS伪类是添加到选择器的关键字，指定要选择的元素的特殊状态。例如，:hover 将在用户悬停在选择器指定的元素上时应用样式。</p>
 <p>伪类连同伪元素一起, 他们允许你不仅仅是根据文档DOM树中的内容对元素应用样式,而且还允许你根据诸如像导航历史这样的外部因素来应用样式(:visited, 为例), 同样的,可以根据内容的状态 (例如 在一些表单元素上的 :checked ), 或者鼠标的位置 (例如 :hover 让你知道是否鼠标在一个元素上悬浮)来应用样式.</p>
-<p>语法<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">selector</span><span class="selector-pseudo">:pseudo-class</span> &#123; <span class="attribute">property</span>: value; &#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123; <span class="attribute">color</span>: blue &#125; <span class="comment">/* 未访问链接 */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123; <span class="attribute">color</span>: purple &#125; <span class="comment">/* 已访问链接 */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123; <span class="attribute">font-weight</span>: bold &#125; <span class="comment">/* 用户鼠标悬停 */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123; <span class="attribute">color</span>: lime &#125; <span class="comment">/* 激活链接 */</span></div><div class="line">..........</div></pre></td></tr></table></figure></p>
+<p>语法
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">selector</span><span class="selector-pseudo">:pseudo-class</span> &#123; <span class="attribute">property</span>: value; &#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123; <span class="attribute">color</span>: blue &#125; <span class="comment">/* 未访问链接 */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123; <span class="attribute">color</span>: purple &#125; <span class="comment">/* 已访问链接 */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123; <span class="attribute">font-weight</span>: bold &#125; <span class="comment">/* 用户鼠标悬停 */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123; <span class="attribute">color</span>: lime &#125; <span class="comment">/* 激活链接 */</span></div><div class="line">..........</div></pre></td></tr></table></figure></p>
 <h4 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h4><p>就像 pseudo classes (伪类)一样， 伪元素添加到选择器，但不是描述特殊状态，它们允许您为元素的某些部分设置样式。 例如， ::first-line  伪元素只定位由选择器指定的元素的第一行。</p>
-<p>语法<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">selector</span><span class="selector-pseudo">::pseudo-element</span> &#123; <span class="attribute">property</span>: value; &#125;</div></pre></td></tr></table></figure></p>
+<p>语法
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">selector</span><span class="selector-pseudo">::pseudo-element</span> &#123; <span class="attribute">property</span>: value; &#125;</div></pre></td></tr></table></figure></p>
 <ul>
-<li>::after<br>CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后一个子元素。通常会配合content属性来为该元素添加装饰内容。这个虚拟元素默认是行内元素。<blockquote>
+<li>::after
+CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后一个子元素。通常会配合content属性来为该元素添加装饰内容。这个虚拟元素默认是行内元素。<blockquote>
 <p>::after表示法是在CSS 3中引入的，::符号是用来区分伪类和伪元素的。支持CSS3的浏览器同时也都支持CSS2中引入的表示法:after。</p>
 </blockquote>
 </li>
@@ -458,7 +470,7 @@
 
 
 <!-- Image to hack wechat -->
-<img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0" />
+<!--<img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0" />-->
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
