@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="夏明儒 JavaScript CSS HTML">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/favicon.ico">
+
+    <title>
+        
+          奇舞前端特训营视频HTML篇 - 夏明儒的博客 | Mingru&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://mingrutough.github.io/2017/10/26/360video-html/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/mingru-blog.css">    
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingru’s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/home-bg.jpeg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                          <a class="tag" href="/tags/#html" title="html">html</a>
+                        
+                          <a class="tag" href="/tags/#css" title="css">css</a>
+                        
+                    </div>
+                    <h1>奇舞前端特训营视频HTML篇</h1>
+                    <h2 class="subheading">感觉还不错</h2>
+                    <span class="meta">
+                        Posted by mingrutough on
+                        2017-10-26
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><a href="https://t.75team.com/" target="_blank" rel="external">奇舞学院</a></p>
+<blockquote>
+<p>备注：360弄的一个前端特训营课程，内容详实，收获多多。</p>
+</blockquote>
+<h2 id="HTML简介与文本"><a href="#HTML简介与文本" class="headerlink" title="HTML简介与文本"></a>HTML简介与文本</h2><h4 id="1-Doctype作用"><a href="#1-Doctype作用" class="headerlink" title="1.Doctype作用"></a>1.Doctype作用</h4><ul>
+<li>指定HTML页面使用的标准和版本。</li>
+<li>浏览器根据doctype决定使用哪种渲染模式。</li>
+</ul>
+<h4 id="2-渲染模式"><a href="#2-渲染模式" class="headerlink" title="2.渲染模式"></a>2.渲染模式</h4><ul>
+<li>怪异模式（html4之前的版本）</li>
+<li>准标准模式（容错性较强）</li>
+<li>标准模式</li>
+</ul>
+<h4 id="3-XHTML"><a href="#3-XHTML" class="headerlink" title="3.XHTML"></a>3.XHTML</h4><ul>
+<li>用XML语法重新定义HTML</li>
+<li>语法要求严格。<br>之后XHTML2.0版本过于激进，问题多，不好用，以至于项目关闭。</li>
+</ul>
+<h4 id="4-HTML5设计思想"><a href="#4-HTML5设计思想" class="headerlink" title="4.HTML5设计思想"></a>4.HTML5设计思想</h4><ul>
+<li>兼容已有内容</li>
+<li>避免不必要的复杂性</li>
+<li>解决现实的问题</li>
+<li>优雅降级 （比如说在canvas里面嵌入html标签，当浏览器不支持的时候，会显示你嵌入的标签，对开发者友好，达到优雅降级）</li>
+<li>尊重事实标准</li>
+<li>用户&gt;开发者&gt;浏览器厂商&gt;标准制定者&gt;理论完美</li>
+</ul>
+<h4 id="5-HTML5中的变化。"><a href="#5-HTML5中的变化。" class="headerlink" title="5.HTML5中的变化。"></a>5.HTML5中的变化。</h4><ul>
+<li>简化了doctype和meta标签。</li>
+<li>新增语义化标签和属性。(footer，header标签等等)</li>
+<li>去掉纯展示性标签(因为强调样式与结构分离，可以通过css实现)</li>
+<li>canvas、video、audio、离线、本地存储、拖拽等等。</li>
+</ul>
+<h4 id="6-HTML5的语法。"><a href="#6-HTML5的语法。" class="headerlink" title="6.HTML5的语法。"></a>6.HTML5的语法。</h4><ul>
+<li>标签不区分大小写，推荐小写</li>
+<li>空标签可以不闭合，比如input、meta</li>
+<li>属性不必引号，推荐双引号</li>
+<li>某些属性值可以省略，比如required、readonly。 (它们的值为true or false，值为true的时候可以直接写属性而不用写值)</li>
+</ul>
+<p>流式元素(flow)，此类元素通常包含文本或植入的内容,其实就是元素里面可以放入其他的标签。</p>
+<h4 id="7-HTML中的文本标签"><a href="#7-HTML中的文本标签" class="headerlink" title="7.HTML中的文本标签"></a>7.HTML中的文本标签</h4><ul>
+<li>HTML &lt;hr&gt; 元素表示段落级元素之间的主题转换（例如，一个故事中的场景的改变，或一个章节的主题的改变）。在HTML的早期版本中，它是一个水平线。现在它仍能在可视化浏览器中表现为水平线，但目前被定义为语义上的，而不是表现层面上。</li>
+<li>&lt;ol&gt;标签 ，start可以设置顺序开始的数字。默认为1。</li>
+<li>&lt;ul&gt;的&lt;li&gt;里面还可以嵌入&lt;ul&gt;。会自动缩进。</li>
+<li>&lt;dl&gt;定义列表，用来表示一些键值对含义的列表。&lt;dt&gt;对应为键，&lt;dd&gt;对应为值。</li>
+<li>引用：&lt;blockquote&gt;对应为长段落的引用、&lt;cite&gt;用于比较短的一些名词的引用、&lt;q&gt;也可以表示引用，其与&lt;blockquote&gt;对应，它是表示一些短的语句的引用。</li>
+</ul>
+<h4 id="8-预格式化文本"><a href="#8-预格式化文本" class="headerlink" title="8.预格式化文本"></a>8.预格式化文本</h4><ul>
+<li>&lt;pre&gt;标签可以保留标签内的文本的格式，比如说换行以及多个空格。</li>
+<li>展示代码一般用 &lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;以顺利保留标签内文本格式。</li>
+<li>&lt;figure&gt; 里面经常用于例如论文中的插图。</li>
+</ul>
+<h4 id="9-网页总体结构"><a href="#9-网页总体结构" class="headerlink" title="9.网页总体结构"></a>9.网页总体结构</h4><p><img src="http://note.youdao.com/yws/res/3964/WEBRESOURCEfa20469e9fc5eab1b511e56c906aba35" alt=""></p>
+<h4 id="10-强调"><a href="#10-强调" class="headerlink" title="10.强调"></a>10.强调</h4><ul>
+<li>strong: 重要性、严重性和紧急性</li>
+<li>em: 从一句话中突出某个词语</li>
+<li>b: 将词语在视觉上和其他部分区分，比如论文摘要中的关键词</li>
+<li>i: 换一种语调去说一句话，比如说其他语言翻译，旁白等。</li>
+<li>&lt;dfn&gt;定义标签</li>
+<li>&lt;abbr&gt;缩写标签，展示缩写的词</li>
+<li>上标&lt;sup&gt; 下标&lt;sub&gt;</li>
+<li>&lt;wbr&gt;标签，正常情况下不显示，而在当包含其标签的文本需要换行的时候会在它出现的地方换行</li>
+</ul>
+<h4 id="11-实体-entity-字符"><a href="#11-实体-entity-字符" class="headerlink" title="11.实体(entity)字符"></a>11.实体(entity)字符</h4><ul>
+<li>空格 ‘&amp;nbsp’;</li>
+<li>&lt; 小于号 ‘&amp;lt’;</li>
+<li>&gt; 大于号 ‘&amp;gt’;<br>…………</li>
+</ul>
+<h2 id="链接与图片"><a href="#链接与图片" class="headerlink" title="链接与图片"></a>链接与图片</h2><h4 id="1-lt-a-href-””-gt-查看图片-lt-a-gt"><a href="#1-lt-a-href-””-gt-查看图片-lt-a-gt" class="headerlink" title="1.&lt;a href=””&gt;查看图片&lt;/a&gt;"></a>1.&lt;a href=””&gt;查看图片&lt;/a&gt;</h4><ul>
+<li>href指定的url可以省略协议和host，省略之后协议及host与页面当前的协议保持一致。</li>
+<li>chrome控制台中，$0可以打印出当前选中的html元素。</li>
+</ul>
+<h4 id="2-页面内锚点"><a href="#2-页面内锚点" class="headerlink" title="2.页面内锚点"></a>2.页面内锚点</h4><ul>
+<li>href = “#” 会回到页面顶部，</li>
+<li>href = “#haha” 页面会滚动到id 名为haha的元素位置。<br>通过页面内的锚点设置跳转到相关元素非常方便。</li>
+</ul>
+<h4 id="3-a标签中的target属性"><a href="#3-a标签中的target属性" class="headerlink" title="3.a标签中的target属性"></a>3.a标签中的target属性</h4><p>可通过target属性控制链接打开的方式。默认是在当前窗口。</p>
+<ul>
+<li>target=”_self”</li>
+<li>target=”_blank”</li>
+<li>target=”abc”  在同一个页面里面给target指定同一个值的链接都会在同一个target页面打开，这种设置可防止从一个页面打开过多页面。</li>
+</ul>
+<h4 id="4-lt-img-src-”…-”-alt-”替代文字”-width-””-height-””-gt"><a href="#4-lt-img-src-”…-”-alt-”替代文字”-width-””-height-””-gt" class="headerlink" title="4.&lt;img src=”….”  alt=”替代文字”  width=”” height=””&gt;"></a>4.&lt;img src=”….”  alt=”替代文字”  width=”” height=””&gt;</h4><p>建议指定宽高，防止页面渲染的时候出现跳动。</p>
+<p>指定图片宽高</p>
+<ul>
+<li>不指定宽高： 原图大小显示</li>
+<li>指定宽度：按比例缩放到指定宽度</li>
+<li>指定高度：按比例缩放发哦指定高度</li>
+<li>指定高宽：强制按指定宽高显示</li>
+</ul>
+<h4 id="5-常用图片格式"><a href="#5-常用图片格式" class="headerlink" title="5.常用图片格式"></a>5.常用图片格式</h4><ul>
+<li>jpg 。 适合照片   颜色比较丰富，相对于png相同的像素占用空间小。</li>
+<li>png 。色彩较少的时候使用，png24可以半透明。无损压缩，图片失真小。但是存储的索引色数量有限。</li>
+<li>gif。无法半透明，可以做动画。</li>
+<li>webp。谷歌新出的图片压缩格式。尺寸小，占用空间小，适合浏览器端使用。</li>
+</ul>
+<h2 id="表格与表单"><a href="#表格与表单" class="headerlink" title="表格与表单"></a>表格与表单</h2><h4 id="1-表格"><a href="#1-表格" class="headerlink" title="1.表格"></a>1.表格</h4><pre><code>&lt;table&gt;
+&lt;thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt; (表头性质的)
+&lt;td&gt;
+其嵌套规则很严格。建议语义化编写。
+&lt;td rowspan=&quot;2&quot;&gt; 表示一个td单元格占用两行
+&lt;td colspan=&quot;2&quot;&gt; 表示一个td单元格占用两列
+
+
+&lt;caption&gt;必须是table的第一个元素。用该元素指定表格的标题。
+
+列组 (colgroup)。 &lt;colgroup&gt;里面的&lt;col&gt;会与下文中的&lt;tr&gt;里面的&lt;col&gt;一一对应的。该元素对于批量设置列的样式十分简单。
+
+http://www.ruanyifeng.com/blog/2009/05/html_table_mastering.html该文章详细描述了HTML表格的一些高级用法。
+比如，下面的代码表示前40列为一组，每列的宽度为20像素。
+　　&lt;COLGROUP span=&quot;40&quot; width=&quot;20&quot;&gt;
+　　&lt;/COLGROUP&gt;
+span属性，可以指定colgroup标签能够影响到的列数。
+在colgroup标签内部，可以使用col标签为这一列组中的每一列指定属性。
+比如，下面的代码表示列组中每一列的段度为20像素：
+　　&lt;COLGROUP&gt;
+　　&lt;COL width=&quot;20&quot;&gt;
+　　&lt;COL width=&quot;20&quot;&gt;
+　　...a total of forty COL elements...
+　　&lt;/COLGROUP&gt;
+再比如，如果40列中只有最后一列的样式不一样，那就这样写，方便在CSS中指定：
+　　&lt;COLGROUP width=&quot;20&quot;&gt;
+　　&lt;COL span=&quot;39&quot;&gt;
+　　&lt;COL id=&quot;format-me-specially&quot;&gt;
+　　&lt;/COLGROUP&gt;
+</code></pre><h4 id="2-表单"><a href="#2-表单" class="headerlink" title="2.表单"></a>2.表单</h4><pre><code>使用form获取让用户提供数据
+&lt;form action=&quot;/url&quot; method=&quot;POST&quot;&gt;
+&lt;p&gt;用户名： &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;/p&gt;
+&lt;p&gt;密码： &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;button type=&quot;submit&quot;&gt;登陆&lt;/button&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+GET是一个安全的操作，不会对服务器数据产生改动。
+GET请求在各个环节都有可能是浏览器或者代理服务器缓存的数据。
+
+URL 编码
+空格 =&gt; %20
+! =&gt;%21 
+。。。。
+对这些字符进行转义。新的url编码会把空格替换为“+”号。
+
+options会在跨域资源共享(CORS)时使用，用于查询是否允许跨域。
+
+&lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;请输入用户名&quot; value=&quot;xiaaxi&quot;  autofocus&gt;
+&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;/p&gt; 输入的字符会以*好代替
+&lt;textarea col=&quot;40&quot; row=&quot;8&quot;&gt; 用户输入多行文本 (也是属于表单元素)
+&lt;/textarea&gt;
+
+输入验证
+&lt;form action=&quot;/url&quot;&gt;
+&lt;p&gt;
+    &lt;input required minlength=&quot;2&quot; maxlength=&quot;10&quot;
+        placeholder=&quot;2-10位&quot;&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;input required type=&quot;text&quot; pattern=&quot;1\d{10}&quot; placeholder=&quot;请输入手机号&quot;&gt;(pattern对应为正则表达式)
+&lt;/p&gt;
+&lt;p&gt;&lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+利用JS可以对这些原生的验证提示进行修改。。   原生的验证可能存在响应不够及时等问题。
+
+type
+&lt;input type=&quot;search&quot;&gt;
+&lt;input type=&quot;email&quot;&gt;
+&lt;input type=&quot;url&quot;&gt;
+
+novalidate 属性用于取消表单自身的验证。
+&lt;form action=&quot;/url&quot; novalidate&gt;
+&lt;/form&gt;
+
+radio(单选框)
+&lt;form action=&quot;/url&quot;&gt;
+&lt;input type=&quot;radio&quot; name=&quot;fruit&quot;&gt;
+&lt;input type=&quot;radio&quot; name=&quot;fruit&quot;&gt;
+&lt;input type=&quot;radio&quot; name=&quot;fruit&quot;&gt;
+&lt;input type=&quot;radio&quot; name=&quot;fruit&quot;&gt;
+&lt;/form&gt;
+
+checkbox(单选框)
+&lt;form action=&quot;/url&quot;&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot;&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot;&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot;&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot;&gt;
+&lt;/form&gt;
+
+label标签，将标签内的内容与其对应的表单元素相关联。而且其对于一些读屏软件非常友好。
+关联方式：
+1.
+&lt;form action=&quot;/url&quot;&gt;
+&lt;input type=&quot;text&quot;  id=&quot;name&quot;&gt;
+&lt;label for=&quot;name&quot;&gt;请输入名字：&lt;/label&gt;
+&lt;/form&gt;
+2.
+&lt;label &gt;请输入名字：&lt;input type=&quot;text&quot;  &gt;&lt;/label&gt;
+
+select（下拉框）
+
+&lt;input type=&quot;hidden&quot;&gt;隐藏的不显示的表单
+
+
+文件选择
+
+&lt;form action=&quot;/url&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot; &gt;
+&lt;p&gt;
+    &lt;input type=&quot;file&quot; name=&quot;resume&quot;  multiple  accept=&quot;image/*&quot;&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+
+上传的内容包含在boundary中。
+
+
+button
+
+&lt;button type=&quot;submit&quot;&gt;&lt;/button&gt;
+</code></pre><h2 id="HTML扩展知识"><a href="#HTML扩展知识" class="headerlink" title="HTML扩展知识"></a>HTML扩展知识</h2><h4 id="1-accesskey-amp-tabindex"><a href="#1-accesskey-amp-tabindex" class="headerlink" title="1.accesskey &amp; tabindex"></a>1.accesskey &amp; tabindex</h4><p>accesskey 全局属性提供了能为当前元素生成快捷键的方式。这个属性是由空格分隔的字符（单个 Unicode 代码点）列表组成。浏览器使用存在于计算机键盘布局的第一个字符。<br><br>&lt;input accesskey=”i” &gt;</p>
+<table><br>    <th><br>        </th><td>Windows</td><br>        <td>Linux</td><br>        <td>Mac</td><br>    <br>    <tr><br>        <td rowspan="2">Firefox</td><br>        <td colspan="2">Alt + Shift + key</td><br>        <td>On Firefox 14 or newer, Control + Alt + keyOn Firefox 13 or older, Control + key</td><br>    </tr><br>    <tr><br>        <td>Internet Explorer</td><br>        <td>Alt + key</td><br>        <td colspan="2">N/A </td><br>    </tr><br>    <tr><br>        <td>Google Chrome</td><br>        <td colspan="2">Alt + key</td><br>        <td>Control + Alt + key</td><br>    </tr><br>    <tr><br>        <td>Safari</td><br>        <td>Alt + key</td><br>        <td>N/A</td><br>        <td>Control + Alt + key</td><br>    </tr><br>    <tr><br>        <td>Opera</td><br>        <td colspan="3">Shift + Esc opens a contents list which are accessible by accesskey, then, can choose an item by pressing key  </td><br>    </tr><br></table>
+
+<p>tabindex 全局属性 是个整数，表示元素（如果可聚焦）是否能够接受输入焦点。 如果它应该参与键盘序列导航，那么就是它的位置。它可以设为多种值：</p>
+<ul>
+<li>tabindex=负值 (通常是tabindex=“-1”)，表示元素是可聚焦的，但是不能通过键盘导航来访问到该元素，用JS做页面小组件内部键盘导航的时候非常有用。</li>
+<li>tabindex=”0” ，表示元素是可聚焦的，并且可以通过键盘导航来聚焦到该元素，它的相对顺序是当前处于的DOM结构来决定的。</li>
+<li>tabindex=正值，表示元素是可聚焦的，并且可以通过键盘导航来访问到该元素；它的相对顺序按照tabindex 的数值递增而滞后获焦。如果多个元素拥有相同的 tabindex，它们的相对顺序按照他们在当前DOM中的先后顺序决定。</li>
+</ul>
+<p>根据键盘序列导航的顺序，值为 0 、非法值、或者没有 tabindex 值的元素应该放置在 tabindex 值为正值的元素后面。</p>
+<h4 id="2-id-class-amp-style"><a href="#2-id-class-amp-style" class="headerlink" title="2.id , class &amp; style"></a>2.id , class &amp; style</h4><ul>
+<li>id保证唯一性</li>
+<li>class多用在CSS</li>
+<li>style指定内联样式</li>
+</ul>
+<h4 id="3-contenteditable-amp-spellcheck"><a href="#3-contenteditable-amp-spellcheck" class="headerlink" title="3.contenteditable &amp;  spellcheck"></a>3.contenteditable &amp;  spellcheck</h4><p>&lt;section<br> contenteditable<br> spellcheck=”true”<br>&gt;夏明儒好帅&lt;/section&gt;</p>
+<p>这样的话，生成的html在页面上是可编辑的。</p>
+<h4 id="4-语言lang-amp-dir"><a href="#4-语言lang-amp-dir" class="headerlink" title="4.语言lang &amp; dir"></a>4.语言lang &amp; dir</h4><p>&lt;div lang=”zh-CN”&gt; 可以让开发者识别页面的语言，应用场景比如用插件来翻译页面。<br>&lt;p dir=”rtl” lang=”ar”&gt;<br>dir 指定的是语言书写的方向。比如说阿拉伯语就是从右向左书写的。</p>
+<h4 id="5-title属性"><a href="#5-title属性" class="headerlink" title="5.title属性"></a>5.title属性</h4><p>当鼠标悬浮到该元素时，浏览器会显示title的内容。<br>&lt;abbr title=”…”&gt;&lt;/abbr&gt;</p>
+<h4 id="6-hidden属性"><a href="#6-hidden属性" class="headerlink" title="6.hidden属性"></a>6.hidden属性</h4><p>&lt;p hidden&gt;&lt;/p&gt;<br>可直接隐藏元素。比设置display: none可用性强。</p>
+<h4 id="7-无障碍性。"><a href="#7-无障碍性。" class="headerlink" title="7.无障碍性。"></a>7.无障碍性。</h4><p>提升无障碍性：</p>
+<ul>
+<li>为img提供alt属性</li>
+<li>noscript。（假如浏览器关闭了javascript引擎，或者脚本被禁用，noscript可以指定一些用户提示）</li>
+<li>input 和label对应，把区域做的足够大</li>
+<li>文字和背景有足够对比度</li>
+<li>键盘可操作</li>
+</ul>
+<h4 id="8-语义化。"><a href="#8-语义化。" class="headerlink" title="8.语义化。"></a>8.语义化。</h4><ul>
+<li>HTML中的元素、属性及属性值都拥有某些含义</li>
+<li>开发者应该遵循语义来编写HTML</li>
+</ul>
+<h4 id="9-meta标签"><a href="#9-meta标签" class="headerlink" title="9.meta标签"></a>9.meta标签</h4><p>描述页面的元信息以及设置一些功能。<br><img src="http://note.youdao.com/yws/res/4250/WEBRESOURCE4e6502406090f995668358f9b98b9425" alt=""></p>
+<h4 id="10-data"><a href="#10-data" class="headerlink" title="10.data-*"></a>10.data-*</h4><p>&lt;div data-id=”1”&gt;&lt;/div&gt;<br>标签的dataset 属性可以获取设置的data-id；</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/10/30/360video-css/" data-toggle="tooltip" data-placement="top" title="奇舞前端特训营视频CSS篇">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/10/25/useful-articals/" data-toggle="tooltip" data-placement="top" title="有用的文章合集">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                          <a class="tag" href="/tags/#html" title="html">html</a>
+                        
+                          <a class="tag" href="/tags/#css" title="css">css</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingru’s Blog 2017 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://mingrutough.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
