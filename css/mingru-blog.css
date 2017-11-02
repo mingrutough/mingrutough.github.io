@@ -1,3 +1,10 @@
+/*重置块内的所有样式*/
+.reset-block{
+    all:initial;
+}
+
+
+
 header.intro-header {
     /*height: 400px;*/
     background-repeat: no-repeat;

@@ -238,8 +238,7 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 </ol>
 <ul>
 <li>对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。</li>
-<li>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。UTF-8 编码字符最长可达六个字节.
-<img src="http://note.youdao.com/yws/res/3489/WEBRESOURCE82198b3eaceb319cef3b4db2ecbe86ea" alt="">
+<li>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。UTF-8 编码字符最长可达六个字节.<img title="unicode" alt="unicode" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/uincode.png">
 举个例子。已知”严”的unicode是4E25（100111000100101），根据上表，可以发现4E25处在第三行的范围内（0000 0800-0000 FFFF），因此”严”的UTF-8编码需要三个字节，即格式是”1110xxxx 10xxxxxx 10xxxxxx”。然后，从”严”的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，”严”的UTF-8编码是”11100100 10111000 10100101”，转换成十六进制就是E4B8A5。</li>
 </ul>
 </blockquote>
