@@ -13,7 +13,7 @@
 
     <title>
         
-          javascript权威指南 - 夏明儒的博客 | Mingru&#39;s Blog
+          JavaScript权威指南 - 夏明儒的博客 | Mingru&#39;s Blog
         
     </title>
 
@@ -180,7 +180,7 @@
                           <a class="tag" href="/tags/#O&#39;REILLY" title="O&#39;REILLY">O&#39;REILLY</a>
                         
                     </div>
-                    <h1>javascript权威指南</h1>
+                    <h1>JavaScript权威指南</h1>
                     <h2 class="subheading">好书都要看</h2>
                     <span class="meta">
                         Posted by mingrutough on
@@ -203,8 +203,55 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><img src="/img/js_book1.png"></p>
-
+                <img title="jsDefinetiveGuide.jpg" alt="jsDefinetiveGuide.jpg" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/jsDefinetiveGuide.jpg">
+<h3 id="1-5章"><a href="#1-5章" class="headerlink" title="1-5章"></a>1-5章</h3><ol>
+<li><p>js程序是用Unicode字符集编写的。需要注意的是，js是区分大小写的，而html并不区分大小写。</p>
+</li>
+<li><p>js中提供了可以包含在字符串中的转义序列，以创建不能直接键入的字符。
+转义序列以反斜杠(\)开头，它通知javascript解释器下一个字符是特殊字符。可以使用\u hhhh转义序列来指定Unicode字符。其中hhhh是四位十六进制数。
+这种Unicode转义写法可以用在javascript字符串直接量、正则表达式直接量和标识符中。</p>
+<img title="jsDefinitiveGuide0.png" alt="jsDefinitiveGuide0.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/jsDefinitiveGuide0.png"></li>
+<li><p>javascript中的标识符必须以字母、下划线（_）或美元符($)开始; javascript可以自动填补分号。但是它并不是在所有换行处都填补分号：只有在缺少了分号就无法解析代码的时候，javascript才会填补分号。（有一些例外情况，不过还是倾向于写分号的语法）。</p>
+</li>
+<li><p>js类型可分为可变类型和不可变类型。可变类型的值是可修改的。对象和数组属于可变类型。数字、布尔值、null和undefined属于不可变类型。它们的值都是不可修改的;js中的算术运算在溢出时或被零整除时不会报错。当数字运算结果超过js中所能表达的数字上限或下限时。 结果为Infinity或-Infinity。
+js中预定义了全局变量Infinity和NaN，用来表示正无穷大和非数字值。</p>
+</li>
+<li><p>js中的二进制浮点数表示法并不能精确的表示类似0.1这样简单的数字。 由于舍入误差，0.3和0.2之间的近似差值实际上并不等于0.2和0.1之间的近似差值。</p>
+<img title="jsDefinitiveGuide0.png" alt="jsDefinitiveGuide0.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/jsDefinitiveGuide1.png"></li>
+<li>字符串是一组由16位值组成的不可变的有序序列。每个字符通常来自于Unicode字符集。字符串的长度是其所含16位值的个数。<img title="jsDefinitiveGuide2.png" alt="jsDefinitiveGuide2.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/jsDefinitiveGuide2.png"></li>
+<li><p>js中，字符串可以拆分成数行，每行必须以反斜杠( \ )结束。反斜杠和行结束符都不算字符串的内容。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> a =<span class="string">" xia \</span></div><div class="line"><span class="string">ming \</span></div><div class="line"><span class="string">ru \</span></div><div class="line"><span class="string">"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>存取字符串、数字或布尔值的属性时创建的临时对象称作包装对象。通常将对象称之为引用类型，对象的值都是引用，所以对象的比较都是引用的比较:当且仅当它们引用同一个基对象时，它们才相等。</p>
+</li>
+<li><p>Object.assign()方法用于将所有可枚举的属性 的值从一个或者多个源对象复制到目标对象。它将返回目标对象。
+语法： Object.assign(targrt, …sources)。Object.assign() 拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</p>
+</li>
+<li><p>if 语句会将undefined转换为false，但”==”运算符从不试图将其操作数转换为布尔值。做显式类型转换最简单的方法就是使用Boolean()、Number()、String()或Object()函数。因为当不通过new运算符调用这些函数时，它们会作为类型转换函数。</p>
+</li>
+<li><p>默认的来自Object.prototype的toString()方法并不会返回一个有趣的值。
+({x:1, y:2}).toString()  // =&gt; “[object Object]”.
+而很多类定义了更多特定版本的toString()方法。
+数组类的toString()方法将每个数组元素转换为一个字符串，并在元素之间添加逗号后合并成结果字符串。
+函数类的toString()方法通常是返回用户定义的函数的javascript源代码字符串。
+。。。。
+另一个转换对象的函数是valueOf()。默认的valueOf()方法简单地返回对象本身，而不是一个原始值。数组、函数、正则表达式简单的继承了这个默认方法。
+日期类定义的valueOf()方法会返回它的一个内部表示： 即时间戳（1970年1月1日以来的毫秒数）。</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> scope = <span class="string">"global"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="built_in">console</span>.log(scope); <span class="comment">// 输出 “undefined” .是因为函数体内发生了变量名提升，但是此处的scope并未被赋值。</span></div><div class="line"><span class="keyword">var</span> scope = <span class="string">"local"</span>;</div><div class="line"><span class="built_in">console</span>.log(scope);  <span class="comment">// local；</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>undefined 是全局变量，和null不同，它不是一个关键字; 对象表达式之后跟随一对方括号，则会计算方括号内的表达式的值并将它转换为字符串;in运算符希望它的左操作数是一个字符串或可以转换为字符串，希望它的右操作数是一个对象。如果右侧的对象拥有一个名为左操作数的属性名，那么表达式返回true。</p>
+</li>
+<li><p>instanceof 运算符希望左操作数是一个对象，右操作数标识对象的类。如果左侧的对象是右侧对象的实例，则表达式返回true;否则返回false。(其实就是能不能在左边对象的原型链上找到右边对象); 赋值表达式的值是右操作数的值。而且赋值操作符的结合性是从右至左。所以i = j = k = o，可以把三个变量初始化为o。</p>
+</li>
+<li><p>eval()只有一个参数，如果传入的参数不是字符串，则直接返回这个参数。如果参数是字符串，它会把字符串当成JavaScript代码进行编译。如果编译失败则抛出一个语法错误异常。如果编译成功则开始执行这段代码，并返回字符串中的最后一个表达式或语句的值，如果最后一个表达式或语句没有值，则最终返回undefined。
+eval()亦可用来解析json string。将相应的字符串转换为对象。常用在后端返回的json string不标准的情况。正常情况下还是使用JSON.parse()比较安全。</p>
+</li>
+<li><p>条件运算符（? :）
+条件运算符的操作数可以是任意类型，第一个操作数当成布尔值，如果它是真值，那么将计算第二个操作数，并返回其计算结果，否则，则计算第三个操作数并返回其计算结果。</p>
+</li>
+</ol>
+<h3 id="第6章-对象"><a href="#第6章-对象" class="headerlink" title="第6章 对象"></a>第6章 对象</h3>
 
                 <hr>
 
