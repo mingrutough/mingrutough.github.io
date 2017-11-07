@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="夏明儒 JavaScript CSS HTML">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/favicon.ico">
+
+    <title>
+        
+          Webpack各种资源学习 - 夏明儒的博客 | Mingru&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://mingrutough.github.io/2017/11/06/ruanyifeng-webpack/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/mingru-blog.css">    
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingru’s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    <li>
+                        <a href="/archives/">Archives</a>
+                    </li>
+                    <!--
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/home-bg.jpeg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Webpack" title="Webpack">Webpack</a>
+                        
+                          <a class="tag" href="/tags/#前端构建工具" title="前端构建工具">前端构建工具</a>
+                        
+                    </div>
+                    <h1>Webpack各种资源学习</h1>
+                    <h2 class="subheading">加油加油</h2>
+                    <span class="meta">
+                        Posted by mingrutough on
+                        2017-11-06
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="阮一峰-webpack-demos"><a href="#阮一峰-webpack-demos" class="headerlink" title="阮一峰: webpack-demos"></a><a href="https://github.com/ruanyf/webpack-demos" target="_blank" rel="external">阮一峰: webpack-demos</a></h3><blockquote>
+<ol>
+<li><p>Attention, you have to use two loaders to transform CSS file. First is CSS-loader to read CSS file, and another is Style-loader to insert Style tag into HTML page. Different loaders are linked by exclamation mark(!).</p>
+</li>
+<li><p>url-loader transforms image files. If the image size is smaller than limit bytes, it will be transformed into Data URL; otherwise, it will be transformed into normal URL. As you see, question mark(?) is used to pass parameters into loaders.</p>
+</li>
+<li><p>css-loader?modules (the query parameter modules) enables the CSS Modules spec.It means your module’s CSS is local scoped CSS by default. You can switch it off with :global(…) for selectors and/or rules.</p>
+</li>
+<li><p>Webpack has a plugin system to expand its functions. For example, UglifyJs Plugin will minify output(bundle.js) JS codes.</p>
+</li>
+<li><p>html-webpack-plugin could create index.html for you, and open-browser-webpack-plugin could open a new browser tab when Webpack loads.</p>
+</li>
+<li><p>You can enable some codes only in development environment with environment flags.</p>
+</li>
+<li><p>For big web apps it’s not efficient to put all code into a single file, Webpack allows you to split them into several chunks. Especially if some blocks of code are only required under some circumstances, these chunks could be loaded on demand.</p>
+</li>
+</ol>
+<p>At first, you use require.ensure to define a split point.
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="built_in">require</span>.ensure([<span class="string">'./a'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">require</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> content = <span class="built_in">require</span>(<span class="string">'./a'</span>);</div><div class="line">  <span class="built_in">document</span>.open();</div><div class="line">  <span class="built_in">document</span>.write(<span class="string">'&lt;h1&gt;'</span> + content + <span class="string">'&lt;/h1&gt;'</span>);</div><div class="line">  <span class="built_in">document</span>.close();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>require.ensure tells Webpack that ./a.js should be separated from bundle.js and built into a single chunk file.</p>
+<p>Another way of code splitting is using bundle-loader.</p>
+<p>8.When multi scripts have common chunks, you can extract the common part into a separate file with CommonsChunkPlugin.
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main1.jsx</span></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOM = <span class="built_in">require</span>(<span class="string">'react-dom'</span>);</div><div class="line"></div><div class="line"><span class="comment">// main2.jsx</span></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOM = <span class="built_in">require</span>(<span class="string">'react-dom'</span>);</div></pre></td></tr></table></figure></p>
+<p>index.html
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"init.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>webpack.config.js
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> CommonsChunkPlugin = <span class="built_in">require</span>(<span class="string">"webpack/lib/optimize/CommonsChunkPlugin"</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    bundle1: <span class="string">'./main1.jsx'</span>,</div><div class="line">    bundle2: <span class="string">'./main2.jsx'</span></div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'[name].js'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">    loaders:[</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.js[x]?$/</span>,</div><div class="line">        exclude: <span class="regexp">/node_modules/</span>,</div><div class="line">        loader: <span class="string">'babel-loader'</span>,</div><div class="line">        query: &#123;</div><div class="line">          presets: [<span class="string">'es2015'</span>, <span class="string">'react'</span>]</div><div class="line">        &#125;</div><div class="line">      &#125;,</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> CommonsChunkPlugin(<span class="string">'init.js'</span>)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>9.Vendor chunk </p>
+<p>You can also extract the vendor libraries from a script into a separate file with CommonsChunkPlugin.</p>
+<p>main.js
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</div><div class="line">$(<span class="string">'h1'</span>).text(<span class="string">'Hello World'</span>);</div></pre></td></tr></table></figure></p>
+<p>index.html
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"vendor.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>webpack.config.js
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    app: <span class="string">'./main.js'</span>,</div><div class="line">    vendor: [<span class="string">'jquery'</span>],</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'bundle.js'</span></div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="comment">/* chunkName= */</span><span class="string">'vendor'</span>, <span class="comment">/* filename= */</span><span class="string">'vendor.js'</span>)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>If you want a module available as variable in every module, such as making $ and jQuery available in every module without writing require(“jquery”). You should use ProvidePlugin
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line">$(<span class="string">'h1'</span>).text(<span class="string">'Hello World'</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    app: <span class="string">'./main.js'</span></div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'bundle.js'</span></div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> webpack.ProvidePlugin(&#123;</div><div class="line">      $: <span class="string">"jquery"</span>,</div><div class="line">      jQuery: <span class="string">"jquery"</span>,</div><div class="line">      <span class="string">"window.jQuery"</span>: <span class="string">"jquery"</span></div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="Webpack官方文档学习"><a href="#Webpack官方文档学习" class="headerlink" title="Webpack官方文档学习"></a><a href="https://doc.webpack-china.org/concepts/" target="_blank" rel="external">Webpack官方文档学习</a></h3><h4 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h4><blockquote>
+<p>webpack是一个现代JavaScript应用程序的模块打包器(module bundler).当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bundle - 通常只有一个，由浏览器加载。</p>
+<p>它是高度可配置的，但是，在开始前你需要先理解四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)。</p>
+</blockquote>
+<h4 id="入口-Entry"><a href="#入口-Entry" class="headerlink" title="入口(Entry)"></a>入口(Entry)</h4><blockquote>
+<p>webpack 创建应用程序所有依赖的关系图(dependency graph)。图的起点被称之为入口起点(entry point)。入口起点告诉 webpack 从哪里开始，并根据依赖关系图确定需要打包的内容。可以将应用程序的入口起点认为是根上下文(contextual root) 或 app 第一个启动文件。</p>
+</blockquote>
+<h4 id="出口-Output"><a href="#出口-Output" class="headerlink" title="出口(Output)"></a>出口(Output)</h4><blockquote>
+<p>将所有的资源(assets)归拢在一起后，还需要告诉 webpack 在哪里打包应用程序。webpack 的 output 属性描述了如何处理归拢在一起的代码(bundled code)。</p>
+</blockquote>
+<h4 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h4><blockquote>
+<p>webpack 的目标是，让 webpack 聚焦于项目中的所有资源(asset)，而浏览器不需要关注考虑这些（明确的说，这并不意味着所有资源(asset)都必须打包在一起）。webpack 把每个文件(.css, .html, .scss, .jpg, etc.) 都作为模块处理。然而 webpack 自身只理解 JavaScript。</p>
+<h5 id="Loader-特性"><a href="#Loader-特性" class="headerlink" title="Loader 特性"></a>Loader 特性</h5><ul>
+<li>loader 支持链式传递。能够对资源使用流水线(pipeline)。一组链式的 loader 将按照先后顺序进行编译。loader 链中的第一个 loader 返回值给下一个 loader。在最后一个 loader，返回 webpack 所预期的 JavaScript。</li>
+<li>loader 可以是同步的，也可以是异步的。</li>
+<li>loader 运行在 Node.js 中，并且能够执行任何可能的操作。</li>
+<li>loader 接收查询参数。用于对 loader 传递配置。</li>
+<li>loader 也能够使用 options 对象进行配置。</li>
+<li>除了使用 package.json 常见的 main 属性，还可以将普通的 npm 模块导出为 loader，做法是在 package.json 里定义一个 loader 字段。</li>
+<li>插件(plugin)可以为 loader 带来更多特性。</li>
+<li>loader 能够产生额外的任意文件。
+<em>webpack loader 在文件被添加到依赖图中时，其转换为模块。</em>在更高层面，在 webpack 的配置中 loader 有两个目标。</li>
+<li>识别出(identify)应该被对应的 loader 进行转换(transform)的那些文件。(test 属性)</li>
+<li>转换这些文件，从而使其能够被添加到依赖图中（并且最终添加到 bundle 中）(use 属性)</li>
+</ul>
+</blockquote>
+<h4 id="插件-Plugins"><a href="#插件-Plugins" class="headerlink" title="插件[Plugins]"></a>插件[Plugins]</h4><blockquote>
+<p>webpack 插件是一个具有 apply 属性的 JavaScript 对象。apply 属性会被 webpack compiler 调用，并且 compiler 对象可在整个编译生命周期访问。</p>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><h6 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h6><p>由于插件可以携带参数/选项，你必须在 webpack 配置中，向 plugins 属性传入 new 实例。
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>); <span class="comment">//通过 npm 安装</span></div><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>); <span class="comment">//访问内置的插件</span></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> config = &#123;</div><div class="line">  entry: <span class="string">'./path/to/my/entry/file.js'</span>,</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'my-first-webpack.bundle.js'</span>,</div><div class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>)</div><div class="line">  &#125;,</div><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.(js|jsx)$/</span>,</div><div class="line">        use: <span class="string">'babel-loader'</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(),</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;<span class="attr">template</span>: <span class="string">'./src/index.html'</span>&#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = config;</div></pre></td></tr></table></figure></p>
+<h6 id="Node-API"><a href="#Node-API" class="headerlink" title="Node API"></a>Node API</h6><p><strong>即便使用 Node API，用户也应该在配置中传入 plugins 属性。compiler.apply 并不是推荐的使用方式。</strong>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>); <span class="comment">//访问 webpack 运行时(runtime)</span></div><div class="line"><span class="keyword">const</span> configuration = <span class="built_in">require</span>(<span class="string">'./webpack.config.js'</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> compiler = webpack(configuration);</div><div class="line">compiler.apply(<span class="keyword">new</span> webpack.ProgressPlugin());</div><div class="line"></div><div class="line">compiler.run(<span class="function"><span class="keyword">function</span>(<span class="params">err, stats</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="配置-Configuration"><a href="#配置-Configuration" class="headerlink" title="配置(Configuration)"></a>配置(Configuration)</h4><blockquote>
+<p>webpack的配置文件，是导出一个对象的javascript文件，此对象，由webpack根据对象定义的属性进行解析。因为webpack配置是标准的Node.js CommonJS模块，你可以做到以下事情：</p>
+<ul>
+<li>通过 require(…) 导入其他文件</li>
+<li>通过require(…)使用npm的工具函数</li>
+<li>使用 JavaScript 控制流表达式，例如 ?: 操作符</li>
+<li>对常用值使用常量或变量</li>
+<li>编写并执行函数来生成部分配置</li>
+</ul>
+</blockquote>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/11/02/2017-6-29-js-design-patterns/" data-toggle="tooltip" data-placement="top" title="JavaScript设计模式与开发实践">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Webpack" title="Webpack">Webpack</a>
+                        
+                          <a class="tag" href="/tags/#前端构建工具" title="前端构建工具">前端构建工具</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingru’s Blog 2017 
+                    <br>
+                    <!--Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://mingrutough.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<!--<img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0" />-->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
