@@ -100,14 +100,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -224,8 +224,10 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="built_in">require</span>.ensure([<span class="string">'./a'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">require</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> content = <span class="built_in">require</span>(<span class="string">'./a'</span>);</div><div class="line">  <span class="built_in">document</span>.open();</div><div class="line">  <span class="built_in">document</span>.write(<span class="string">'&lt;h1&gt;'</span> + content + <span class="string">'&lt;/h1&gt;'</span>);</div><div class="line">  <span class="built_in">document</span>.close();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>require.ensure tells Webpack that ./a.js should be separated from bundle.js and built into a single chunk file.</p>
 <p>Another way of code splitting is using bundle-loader.</p>
-<p>8.When multi scripts have common chunks, you can extract the common part into a separate file with CommonsChunkPlugin.
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main1.jsx</span></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOM = <span class="built_in">require</span>(<span class="string">'react-dom'</span>);</div><div class="line"></div><div class="line"><span class="comment">// main2.jsx</span></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOM = <span class="built_in">require</span>(<span class="string">'react-dom'</span>);</div></pre></td></tr></table></figure></p>
+<ol>
+<li>When multi scripts have common chunks, you can extract the common part into a separate file with CommonsChunkPlugin.<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main1.jsx</span></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOM = <span class="built_in">require</span>(<span class="string">'react-dom'</span>);</div><div class="line"></div><div class="line"><span class="comment">// main2.jsx</span></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react'</span>);</div><div class="line"><span class="keyword">var</span> ReactDOM = <span class="built_in">require</span>(<span class="string">'react-dom'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>index.html
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"init.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>webpack.config.js
@@ -241,7 +243,7 @@
 <p>If you want a module available as variable in every module, such as making $ and jQuery available in every module without writing require(“jquery”). You should use ProvidePlugin
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line">$(<span class="string">'h1'</span>).text(<span class="string">'Hello World'</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    app: <span class="string">'./main.js'</span></div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'bundle.js'</span></div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> webpack.ProvidePlugin(&#123;</div><div class="line">      $: <span class="string">"jquery"</span>,</div><div class="line">      jQuery: <span class="string">"jquery"</span>,</div><div class="line">      <span class="string">"window.jQuery"</span>: <span class="string">"jquery"</span></div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="Webpack官方文档学习"><a href="#Webpack官方文档学习" class="headerlink" title="Webpack官方文档学习"></a><a href="https://doc.webpack-china.org/concepts/" target="_blank" rel="external">Webpack官方文档学习</a></h3><h4 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h4><blockquote>
+<h3 id="Webpack官方文档学习"><a href="#Webpack官方文档学习" class="headerlink" title="Webpack官方文档学习"></a><a href="https://doc.webpack-china.org/concepts/" target="_blank" rel="external">Webpack官方文档学习</a></h3><h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><blockquote>
 <p>webpack是一个现代JavaScript应用程序的模块打包器(module bundler).当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bundle - 通常只有一个，由浏览器加载。</p>
 <p>它是高度可配置的，但是，在开始前你需要先理解四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)。</p>
 </blockquote>
@@ -283,6 +285,39 @@
 <li>对常用值使用常量或变量</li>
 <li>编写并执行函数来生成部分配置</li>
 </ul>
+</blockquote>
+<h4 id="Manifest"><a href="#Manifest" class="headerlink" title="Manifest"></a>Manifest</h4><blockquote>
+<p>在使用 webpack 构建的典型应用程序或站点中，有三种主要的代码类型：</p>
+<ol>
+<li>你或你的团队编写的源码。</li>
+<li>你的源码会依赖的任何第三方的 library 或 “vendor” 代码。</li>
+<li>webpack 的 runtime 和 manifest，管理所有模块的交互。<h5 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h5>runtime,以及伴随的manifest数据，主要是指：浏览器运行时，webpack用来连接模块化的应用程序的所有代码。runtime包含:在模块交互时，连接模块所需的加载和解析逻辑。包括浏览器中的已加载模块的连接，以及懒加载模块的执行逻辑。<h5 id="Manifest-1"><a href="#Manifest-1" class="headerlink" title="Manifest"></a>Manifest</h5>那么，一旦你的应用程序中，形如 index.html 文件、一些 bundle 和各种资源加载到浏览器中，会发生什么？你精心安排的 /src 目录的文件结构现在已经不存在，所以 webpack 如何管理所有模块之间的交互呢？这就是 manifest 数据用途的由来……</li>
+</ol>
+<p>当编译器(compiler)开始执行、解析和映射应用程序时，它会保留所有模块的详细要点。这个数据集合称为 “Manifest”，当完成打包并发送到浏览器时，会在运行时通过 Manifest 来解析和加载模块。无论你选择哪种模块语法，那些 import 或 require 语句现在都已经转换为 <strong>webpack_require</strong> 方法，此方法指向模块标识符(module identifier)。通过使用 manifest 中的数据，runtime 将能够查询模块标识符，检索出背后对应的模块。</p>
+</blockquote>
+<h4 id="webpack-自动编译代码功能实现："><a href="#webpack-自动编译代码功能实现：" class="headerlink" title="webpack 自动编译代码功能实现："></a>webpack 自动编译代码功能实现：</h4><blockquote>
+<h5 id="webpack’s-Watch-Mode"><a href="#webpack’s-Watch-Mode" class="headerlink" title="webpack’s Watch Mode"></a>webpack’s Watch Mode</h5><p>webpack –watch 。运行该命令之后如果打包生成的依赖图中任意一个文件被更新，代码将被重新编译，所以你不必手动运行整个过程。（缺点是需要你手动刷新浏览器以查看修改）</p>
+<h5 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h5><p>webpack-dev-server 为你提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading)。</p>
+<h5 id="webpack-dev-middleware"><a href="#webpack-dev-middleware" class="headerlink" title="webpack-dev-middleware"></a>webpack-dev-middleware</h5><p>webpack-dev-middleware 是一个中间件容器(wrapper)，它将通过 webpack 处理后的文件发布到一个服务器(server)。在内部 webpack-dev-server 它使用，然而，它可以作为一个单独的包来提供，可以进行更多的自定义设置来实现更多需求。</p>
+</blockquote>
+<h4 id="webpack-模块热替换-Hot-Module-Replacement-HMR"><a href="#webpack-模块热替换-Hot-Module-Replacement-HMR" class="headerlink" title="webpack 模块热替换(Hot Module Replacement)(HMR)"></a>webpack 模块热替换(Hot Module Replacement)(HMR)</h4><blockquote>
+<p>模块热替换(Hot Module Replacement 或 HMR)是 webpack 提供的最有用的功能之一。它允许在运行时更新各种模块，而无需进行完全刷新。</p>
+</blockquote>
+<h4 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h4><blockquote>
+<p>tree shaking 是一个术语，通常用于描述移除 JavaScript 上下文中的未引用代码(dead-code)。它依赖于 ES2015 模块系统中的静态结构特性，例如 import 和 export。webpack 2 内置支持 ES2015 模块（别名 harmony modules），并能检测出未使用的模块导出。</p>
+<p>我们已经通过 import and export 语法，标识出了那些“未引用代码(dead code)”，但是我们仍然需要从 bundle 中删除它们。要做到这一点，我们将添加一个能够删除未引用代码(dead code)的压缩工具(minifier) - UglifyJSPlugin - 在配置对象中添加……在具有复杂的依赖树的大型应用程序上运行时，tree shaking 或许会对 bundle 产生显著的体积优化。</p>
+<p>为了学会使用 tree shaking，你必须……</p>
+<ul>
+<li>使用 ES2015 模块语法（即 import 和 export）。</li>
+<li>引入一个能够删除未引用代码(dead code)的压缩工具(minifier)（例如 UglifyJSPlugin）。</li>
+</ul>
+<p>你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。</p>
+</blockquote>
+<h4 id="一些知识点记录："><a href="#一些知识点记录：" class="headerlink" title="一些知识点记录："></a>一些知识点记录：</h4><blockquote>
+<ol>
+<li>为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能，将编译后的代码映射回原始源代码。如果一个错误来自于 b.js，source map 就会明确的告诉你。在webpack配置对象中配置如下：</li>
+</ol>
+<p>devtool: ‘inline-source-map’,(仅解释说明，不要用于生产环境)</p>
 </blockquote>
 
 

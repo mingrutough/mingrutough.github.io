@@ -2,7 +2,9 @@
 .reset-block{
     all:initial;
 }
-
+blockquote{
+    font-style: normal !important;
+}
 
 
 header.intro-header {
