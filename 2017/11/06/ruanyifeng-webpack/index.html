@@ -313,6 +313,23 @@
 </ul>
 <p>你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。</p>
 </blockquote>
+<h4 id="生产环境构建"><a href="#生产环境构建" class="headerlink" title="生产环境构建"></a>生产环境构建</h4><blockquote>
+<p>开发环境(development)和生产环境(production)的构建目标差异很大。在开发环境中，我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在生产环境中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置。</p>
+<p><br>
+我们鼓励你在生产环境中启用 source map，因为它们对调试源码(debug)和运行基准测试(benchmark tests)很有帮助。但是要避免在生产中使用 inline-<strong><em> 和 eval-</em></strong>，因为它们可以增加 bundle 大小，并降低整体性能。直接配置 devtool:’source-map’。就可以了。</p>
+<h5 id="指定环境"><a href="#指定环境" class="headerlink" title="指定环境"></a>指定环境</h5><p>许多 library 将通过与 process.env.NODE_ENV 环境变量关联，以决定 library 中应该引用哪些内容。例如，当不处于生产环境中时，某些 library 为了使调试变得容易，可能会添加额外的日志记录(log)和测试(test)。其实，当使用 process.env.NODE_ENV === ‘production’ 时，一些 library 可能针对具体用户的环境进行代码优化，从而删除或添加一些重要代码。我们可以使用 webpack 内置的 DefinePlugin 为所有的依赖定义这个变量：
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line">  <span class="string">'process.env'</span>: &#123;</div><div class="line">    <span class="string">'NODE_ENV'</span>: <span class="built_in">JSON</span>.stringify(<span class="string">'production'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>技术上讲，NODE_ENV 是一个由 Node.js 暴露给执行脚本的系统环境变量。通常用于决定在开发环境与生产环境(dev-vs-prod)下，服务器工具、构建脚本和客户端 library 的行为。然而，与预期不同的是，无法在构建脚本 webpack.config.js 中，将 process.env.NODE_ENV 设置为 “production”。因此，例如 process.env.NODE_ENV === ‘production’ ? ‘[name].[hash].bundle.js’ : ‘[name].bundle.js’ 这样的条件语句，在 webpack 配置文件中，无法按照预期运行。还要注意，任何位于 /src 的本地代码都可以关联到 process.env.NODE_ENV 环境变量.</p>
+</blockquote>
+<h4 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h4><blockquote>
+<p>代码分离是 webpack 中最引人注目的特性之一。此特性能够把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。代码分离可以用于获取更小的 bundle，以及控制资源加载优先级，如果使用合理，会极大影响加载时间。
+有三种常用的代码分离方法：</p>
+<ul>
+<li>入口起点：使用 entry 配置手动地分离代码。</li>
+<li>防止重复：使用 CommonsChunkPlugin 去重和分离 chunk。</li>
+<li>动态导入：通过模块的内联函数调用来分离代码。<h5 id="防止重复-prevent-duplication"><a href="#防止重复-prevent-duplication" class="headerlink" title="防止重复(prevent duplication)"></a>防止重复(prevent duplication)</h5>CommonsChunkPlugin 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。<h5 id="动态导入-dynamic-imports"><a href="#动态导入-dynamic-imports" class="headerlink" title="动态导入(dynamic imports)"></a>动态导入(dynamic imports)</h5>当涉及到动态代码拆分时，webpack 提供了两个类似的技术。对于动态导入，第一种，也是优先选择的方式是，使用符合 ECMAScript 提案 的 import() 语法。第二种，则是使用 webpack 特定的 require.ensure。让我们先尝试使用第一种……</li>
+</ul>
+</blockquote>
 <h4 id="一些知识点记录："><a href="#一些知识点记录：" class="headerlink" title="一些知识点记录："></a>一些知识点记录：</h4><blockquote>
 <ol>
 <li>为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能，将编译后的代码映射回原始源代码。如果一个错误来自于 b.js，source map 就会明确的告诉你。在webpack配置对象中配置如下：</li>
