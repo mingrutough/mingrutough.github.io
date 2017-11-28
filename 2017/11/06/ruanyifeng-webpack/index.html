@@ -329,7 +329,7 @@
 <li>防止重复：使用 CommonsChunkPlugin 去重和分离 chunk。</li>
 <li>动态导入：通过模块的内联函数调用来分离代码。<h5 id="防止重复-prevent-duplication"><a href="#防止重复-prevent-duplication" class="headerlink" title="防止重复(prevent duplication)"></a>防止重复(prevent duplication)</h5>CommonsChunkPlugin 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。<h5 id="动态导入-dynamic-imports"><a href="#动态导入-dynamic-imports" class="headerlink" title="动态导入(dynamic imports)"></a>动态导入(dynamic imports)</h5>当涉及到动态代码拆分时，webpack 提供了两个类似的技术。对于动态导入，第一种，也是优先选择的方式是，使用符合 ECMAScript 提案 的 import() 语法。第二种，则是使用 webpack 特定的 require.ensure。让我们先尝试使用第一种……</li>
 </ul>
-</blockquote>
+<h5 id="暂时看到懒加载（未完待续）"><a href="#暂时看到懒加载（未完待续）" class="headerlink" title="暂时看到懒加载（未完待续）"></a>暂时看到懒加载（未完待续）</h5></blockquote>
 <h4 id="一些知识点记录："><a href="#一些知识点记录：" class="headerlink" title="一些知识点记录："></a>一些知识点记录：</h4><blockquote>
 <ol>
 <li>为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能，将编译后的代码映射回原始源代码。如果一个错误来自于 b.js，source map 就会明确的告诉你。在webpack配置对象中配置如下：</li>
