@@ -204,7 +204,7 @@
                 post-container">
 
                 <img title="jsDefinetiveGuide.jpg" alt="jsDefinetiveGuide.jpg" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/jsDefinetiveGuide.jpg">
-<h3 id="1-5章"><a href="#1-5章" class="headerlink" title="1-5章"></a>1-5章</h3><ol>
+<h2 id="1-5章"><a href="#1-5章" class="headerlink" title="1-5章"></a>1-5章</h2><ol>
 <li><p>js程序是用Unicode字符集编写的。需要注意的是，js是区分大小写的，而html并不区分大小写。</p>
 </li>
 <li><p>js中提供了可以包含在字符串中的转义序列，以创建不能直接键入的字符。
@@ -251,7 +251,7 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 条件运算符的操作数可以是任意类型，第一个操作数当成布尔值，如果它是真值，那么将计算第二个操作数，并返回其计算结果，否则，则计算第三个操作数并返回其计算结果。</p>
 </li>
 </ol>
-<h3 id="第6章-对象"><a href="#第6章-对象" class="headerlink" title="第6章 对象"></a>第6章 对象</h3><p>下面用术语对三类JavaScript对象和两类属性作区分:</p>
+<h2 id="第6章-对象"><a href="#第6章-对象" class="headerlink" title="第6章 对象"></a>第6章 对象</h2><p>下面用术语对三类JavaScript对象和两类属性作区分:</p>
 <ul>
 <li>内置对象(native object)是由ECMAscript规范定义的对象或类。例如，数组、函数、日期和正则表达式都是内置对象。</li>
 <li>宿主对象(host object)是由JavaScript解释器所嵌入的宿主环境（比如Web浏览器）定义的。客户端JavaScript中表示网页结构的HTMLElement对象均是宿主对象。</li>
@@ -259,10 +259,10 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 <li>自有属性是直接在对象中定义的属性。</li>
 <li>继承属性是在对象中的原型对象中定义的属性。</li>
 </ul>
-<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>可以通过对象字面量、关键字new和Object.create()函数来创建对象。</p>
-<h5 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h5><p>Object.create方法，它创建一个新对象，其中第一个参数就是这个对象的原型。
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>可以通过对象字面量、关键字new和Object.create()函数来创建对象。</p>
+<h4 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h4><p>Object.create方法，它创建一个新对象，其中第一个参数就是这个对象的原型。
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">p</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(p == <span class="literal">null</span>) <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Object</span>.create)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.create(p);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> t = <span class="keyword">typeof</span> p;</div><div class="line">    <span class="keyword">if</span>(t!==<span class="string">'object'</span> &amp;&amp; t!== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">    f.prototype = p;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> f();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h5 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h5><ul>
+<h3 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h3><ul>
 <li><p><em>对一个对象的属性进行赋值，要么失败，要么创建一个属性，要么在该对象中设置属性，但是有一个例外，如果o继承属性x,而这个属性是一个具有setter方法的accessor属性，那么这是将调用setter方法而不是给o创建一个属性x。需要注意的是，setter方法是由对象o调用的，而不是定义这个属性的原型对象调用的。因此如果setter方法定义任意属性，这个操作只是针对o本身，并不会修改原型链。</em></p>
 </li>
 <li><p>查询一个不存在的属性并不会报错，如果在对象o自身的属性或继承的属性中均为找到属性x，属性访问表达式o.x会返回undefined。但是，如果对象不存在，那么试图访问这个不存在的对象的属性就会报错。</p>
@@ -274,21 +274,21 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 <li>o中不存在自有属性p: o没有使用setter方法继承属性p，并且o的可扩展性是false。如果o中不存在p，而且没有setter方法可供调用，则p一定会添加至o中。但是如果o不是可扩展的，那么o中不能定义新属性。</li>
 </ol>
 </li>
-<li><h6 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h6><ul>
+<li><h5 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h5><ul>
 <li>delete运算符可以删除对象的属性。它的操作数应当是一个属性访问表达式。让人感到意外的是，delete只是断开属性和宿主对象的联系，而不会去操作属性中的属性。</li>
 <li>delete运算符只能删除自有属性，不能删除继承属性。</li>
 <li>当delete表达式删除成功或没有任何副作用(比如删除不存在的属性)时，它返回true。如果delete后不是一个属性访问表达式，同样返回true。</li>
 <li>delete不能删除那些可配置型为false的属性。某些内置对象的属性是不可配置的。在严格模式下，删除一个不可配置属性会报一个类型错误。在非严格模式中，在这些情况下的delete操作会返回false。</li>
 </ul>
 </li>
-<li><h6 id="检测属性"><a href="#检测属性" class="headerlink" title="检测属性"></a>检测属性</h6><ul>
+<li><h5 id="检测属性"><a href="#检测属性" class="headerlink" title="检测属性"></a>检测属性</h5><ul>
 <li>in 运算符的左侧是属性名(字符串)，右侧是对象。如果对象的自有属性或继承属性中包含这个属性则返回true。</li>
 <li>对象的hasOwnProperty()方法用来检测给定的名字是否是对象的自有属性。对于继承属性它将返回false。</li>
 <li>propertyIsEnumerable()是hasOwnProperty()的增强版。只有检测到是自有属性且这个属性的可枚举性为true时它才返回true。</li>
 <li>还有一种简便的方法是用”!==”判断一个对象的属性是否是undefined。（但是该方法不可以区分属性存在但值为undefined的情况，而in方法可以）。</li>
 </ul>
 </li>
-<li><h6 id="枚举属性"><a href="#枚举属性" class="headerlink" title="枚举属性"></a>枚举属性</h6><ul>
+<li><h5 id="枚举属性"><a href="#枚举属性" class="headerlink" title="枚举属性"></a>枚举属性</h5><ul>
 <li><p>for/in循环可以在循环体中遍历对象中所有可枚举的属性(包括自有属性和继承的属性)。很多时候我们可能并不想要得到继承的属性，我们可以对循环中的属性进行遍历：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> o) &#123;</div><div class="line">    <span class="keyword">if</span>(!o.hasOwnProperty(p)) <span class="keyword">continue</span>; <span class="comment">// 跳过继承的属性</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> o) &#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> o[p] ===<span class="string">'function'</span>) <span class="keyword">continue</span>; <span class="comment">// 跳过方法。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
@@ -297,14 +297,14 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 </ul>
 </li>
 </ul>
-<h5 id="属性getter和setter"><a href="#属性getter和setter" class="headerlink" title="属性getter和setter"></a>属性getter和setter</h5><blockquote>
+<h4 id="属性getter和setter"><a href="#属性getter和setter" class="headerlink" title="属性getter和setter"></a>属性getter和setter</h4><blockquote>
 <p>我们知道，对象属性是由名字、值和一组特性构成的。在ECMAScript5中，属性值可以用一个或两个方法替代。这两个方法就是getter和setter。由getter和setter定义的属性称做“存取器属性”，它不同于“数据属性”，数据属性只有一个简单的值。</p>
 </blockquote>
 <ul>
 <li>当程序查询存取器属性的值时，JavaScript调用getter方法(无参数)。这个方法的返回值就是属性存取表达式的值。当程序设置一个存取器属性的值时，JavaScript调用setter方法，将赋值表达式右侧的值作为参数传入setter。从某种意义上讲，这个方法“设置”属性值。可以忽略setter方法的返回值。</li>
 <li><p>和数据属性不同，存取器属性不具有可写性(writable attribute)。如果属性同时具有getter和setter方法，那么它是一个读/写属性。如果它只有getter/setter方法，那么它是一个只读/只写属性。</p>
 </li>
-<li><h6 id="定义存取器属性"><a href="#定义存取器属性" class="headerlink" title="定义存取器属性"></a>定义存取器属性</h6>  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">    <span class="comment">// 普通的数据属性</span></div><div class="line">    data_prop: value,</div><div class="line"></div><div class="line">    <span class="comment">// 存取器属性都是成对定义的函数</span></div><div class="line"></div><div class="line">    get accessor_prop()&#123;<span class="comment">/*这里是函数体*/</span>&#125;,</div><div class="line">    set accessor_prop()&#123;<span class="comment">/*这里是函数体*/</span>&#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><h5 id="定义存取器属性"><a href="#定义存取器属性" class="headerlink" title="定义存取器属性"></a>定义存取器属性</h5>  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">    <span class="comment">// 普通的数据属性</span></div><div class="line">    data_prop: value,</div><div class="line"></div><div class="line">    <span class="comment">// 存取器属性都是成对定义的函数</span></div><div class="line"></div><div class="line">    get accessor_prop()&#123;<span class="comment">/*这里是函数体*/</span>&#125;,</div><div class="line">    set accessor_prop()&#123;<span class="comment">/*这里是函数体*/</span>&#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>存取器属性定义为一个或两个和属性同名的函数，这个函数定义没有使用function关键字，而是使用get和set。注意，这里没有使用冒号将属性名和函数体分隔开，但在函数体的结束和下一个方法或数据属性之间有逗号分隔。</li>
 <li>注意，JavaScript把存取器函数当做对象的方法来调用，也就是说，函数体内的this指向定义该存取器属性的对象。</li>
@@ -312,7 +312,7 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 </ul>
 </li>
 </ul>
-<h5 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h5><blockquote>
+<h3 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h3><blockquote>
 <p>除了包含名字和值之外，属性还包含一些标识它们可写、可枚举和可配置的特性。通过操作这些特性，开发者可以：</p>
 <ul>
 <li>给原型对象添加方法，并将它们设置成不可枚举的，这让它们看起来更像内置方法。</li>
@@ -344,12 +344,196 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 <li>如果数据属性是不可配置的，则不能将它转换为存取器属性。</li>
 <li>如果数据属性是不可配置的，则不能将它的可写性从false修改为true，但可以从true改为false。</li>
 <li><p>如果数据属性是不可配置且不可写的，则不能修改它的值。然而可配置但不可写属性的值是可以修改的()。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 复制属性的特性</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype,<span class="string">'extend'</span>,&#123;</div><div class="line">    writable: <span class="literal">true</span>,</div><div class="line">    enumerable: <span class="literal">false</span>, <span class="comment">// 定义为不可枚举的</span></div><div class="line">    configurable: <span class="literal">true</span>,</div><div class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params">o</span>)</span>&#123; <span class="comment">// 值就是一个函数</span></div><div class="line">        <span class="comment">// 得到所有的自有属性，包括不可枚举属性</span></div><div class="line">        <span class="keyword">var</span> names = <span class="built_in">Object</span>.getOwnPropertyNames(o);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;names.length; i++)&#123;</div><div class="line">            <span class="comment">// 如果属性已经存在，则跳过</span></div><div class="line">            <span class="keyword">if</span>(names[i] <span class="keyword">in</span> <span class="keyword">this</span>) <span class="keyword">continue</span>;</div><div class="line">            <span class="comment">// 获得o中的属性的描述符</span></div><div class="line">            <span class="keyword">var</span> des = <span class="built_in">Object</span>.getOwnPropertyDescriptor(o,names[i]);</div><div class="line">            <span class="comment">// 用它给this创建一个属性</span></div><div class="line">            <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, names[i], desc);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 复制属性的特性</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype,<span class="string">'extend'</span>,&#123;</div><div class="line">    writable: <span class="literal">true</span>,</div><div class="line">    enumerable: <span class="literal">false</span>, <span class="comment">// 定义为不可枚举的</span></div><div class="line">    configurable: <span class="literal">true</span>,</div><div class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params">o</span>)</span>&#123; <span class="comment">// 值就是一个函数</span></div><div class="line">        <span class="comment">// 得到所有的自有属性，包括不可枚举属性</span></div><div class="line">        <span class="keyword">var</span> names = <span class="built_in">Object</span>.getOwnPropertyNames(o);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; names.length; i++)&#123;</div><div class="line">            <span class="comment">// 如果属性已经存在，则跳过</span></div><div class="line">            <span class="keyword">if</span>(names[i] <span class="keyword">in</span> <span class="keyword">this</span>) <span class="keyword">continue</span>;</div><div class="line">            <span class="comment">// 获得o中的属性的描述符</span></div><div class="line">            <span class="keyword">var</span> des = <span class="built_in">Object</span>.getOwnPropertyDescriptor(o,names[i]);</div><div class="line">            <span class="comment">// 用它给this创建一个属性</span></div><div class="line">            <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, names[i], desc);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<h5 id="对象的三个属性"><a href="#对象的三个属性" class="headerlink" title="对象的三个属性"></a>对象的三个属性</h5>
+<h3 id="对象的三个属性"><a href="#对象的三个属性" class="headerlink" title="对象的三个属性"></a>对象的三个属性</h3><blockquote>
+<p>每个对象都有与之相关的原型(prototype)、类(class)和可扩展性(extensible)。</p>
+</blockquote>
+<h5 id="原型属性"><a href="#原型属性" class="headerlink" title="原型属性"></a>原型属性</h5><ul>
+<li>对象的原型属性是用来继承属性的。它是在实例对象创建之初就设置好的。在ES5中，将对象作为参数传入Object.getPrototypeOf()可以查询它的原型。</li>
+<li>也可以使用O.constructor.prototype来检测一个对象的原型。通过new表达式创建的对象，通常继承一个constructor属性，这个属性指代创建这个对象的构造函数。通过对象直接量或Object.create()创建的对象包含一个名为constructor的属性，这个属性指代Object()构造函数。（不可靠）</li>
+<li>可以用p.isPrototypeOf(o)来检测p是否是o的原型。注意：isPrototypeOf()函数实现的功能和instanceOf运算符非常类似。</li>
+</ul>
+<h5 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h5><ul>
+<li><p>对象的类属性是一个字符串，用以表示对象的类型信息。继承自Object.prototype的toString()方法可以查询它。它会返回如下这种格式的字符串：</p>
+<pre><code>[object class]
+</code></pre><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">classOf</span>(<span class="params">o</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(o === <span class="literal">null</span>) <span class="keyword">return</span> <span class="string">"NULL"</span>;</div><div class="line">    <span class="keyword">if</span>(o === <span class="literal">undefined</span>) <span class="keyword">return</span> <span class="string">"Undefined"</span>;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(o).slice(<span class="number">8</span>,<span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过对象直接量和Object.create创建的对象的类属性是“Object”，那些自定义构造函数创建的对象也是一样，类属性也是“Object”，因此对于自定义的类来说，没办法通过类属性来区分对象的类。</p>
+<img title="对象类属性.jpg" alt="对象类属性.jpg" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/useful-articles2.png">
+</li>
+</ul>
+<h5 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h5><ul>
+<li>对象的可扩展性用以表示是否可以给对象添加新属性。</li>
+<li>可扩展属性的目的是将对象“锁定”，以避免外界的干扰。</li>
+<li>查询以及设置对象可扩展性的API等到用的时候再查阅书籍吧。</li>
+</ul>
+<h5 id="序列化对象"><a href="#序列化对象" class="headerlink" title="序列化对象"></a>序列化对象</h5><ul>
+<li>对象序列化(serialization)是指将对象的状态装换为字符串，也可将字符串还原为对象。ES5提供了内置函数JSON.stringfy()和JSON.parse()用来序列化和还原JavaScript对象。</li>
+</ul>
+<h2 id="第七章-数组"><a href="#第七章-数组" class="headerlink" title="第七章 数组"></a>第七章 数组</h2><h3 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h3><ul>
+<li><h4 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h4><ul>
+<li>Array.join()方法将数组中所有元素都转化为字符串拼接在一起。返回最后生成的字符串。可以指定一个可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。</li>
+<li>Array.join()方法是String.split()方法的逆向操作，后者是将字符串分割成若干块来创建一个数组。</li>
+</ul>
+</li>
+<li><h4 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h4><ul>
+<li>Array.reverse()方法将数组中的元素颠倒顺序，返回逆序的数组。它是直接在原数组上操作的。</li>
+</ul>
+</li>
+<li><h4 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h4><ul>
+<li>Array.sort()方法将数组中的元素排序并返回排序后的数组。当不带参数调用sort()时，数组元素以字母表顺序排序。</li>
+<li>为了按照其他方式而非字母表顺序进行数组排序，必须给sort()方法传递一个比较函数。该函数决定了它的两个参数在排好序的数组中的先后顺序。假设第一个参数应该在前，比较函数应该返回一个小于0的数值。反之，假设第一个参数应该在后，函数应该返回一个大于0的值。并且，假设两个值相等(也就是说，它们的顺序无关紧要)，函数应该返回0。</li>
+</ul>
+</li>
+<li><h4 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h4><ul>
+<li>Array.concat()方法创建并返回一个新数组，它的元素包括调用concat()的原始数组的元素和concat()的每个参数。</li>
+</ul>
+</li>
+<li><h4 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h4><ul>
+<li>Array.slice()方法返回指定数组的一个片段或子数组。它的两个参数分别指定了片段的开始和结束的位置。返回的数组包含第一个参数指定的位置和所有到但不含第二个参数指定的位置之间的所有数组元素。如果只指定一个参数，返回的数组将包含从开始位置到数组结尾的所有元素。如参数中出现负数，它表示相对于数组中最后一个元素的位置。例如，参数-1指定了最后一个元素。。。。。</li>
+</ul>
+</li>
+<li><h4 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h4><ul>
+<li>Array.splice()方法是在数组中插入或删除元素的通用方法。不同于slice()和concat()，splice()会修改调用的数组。</li>
+<li>splice()能够从数组中删除元素、插入元素到数组中或者同时完成这两种操作。它的第一个参数指定了插入（或）删除的起始位置。第二个参数指定了应该从数组中删除的元素的个数。如果省略第二个参数，从起始点开始到数组结尾的所有元素都将被删除。splice()返回一个由删除元素组成的数组，或者如果没有删除元素就返回一个空数组。splice()的前两个参数指定了需要删除的元素。紧随其后的任意个数的参数指定了需要插入到数组中的元素，从第一个参数指定的位置开始插入。</li>
+</ul>
+</li>
+<li><h4 id="push-和pop"><a href="#push-和pop" class="headerlink" title="push()和pop()"></a>push()和pop()</h4><ul>
+<li>push()和pop()方法允许将数组当做栈来使用。push()方法在数组的尾部添加一个或多个元素，并返回数组新的长度。pop()方法则相反：它删除数组的最后一个元素，减小数组长度并返回它删除的值。</li>
+</ul>
+</li>
+<li><h4 id="unshift-shift"><a href="#unshift-shift" class="headerlink" title="unshift()shift()"></a>unshift()shift()</h4><ul>
+<li>unshift()和shift()方法的行为非常类似于push()和pop()，不一样的是前者是在数组的头部而非尾部进行元素的插入和删除操作。注意，当使用多个参数调用unshift()时，参数是一次性插入的，而非一次一个地插入。这意味着最终的数组中插入的元素的顺序和它们在参数列表中的顺序一致。</li>
+</ul>
+</li>
+<li><h4 id="toString-和toLocaleString"><a href="#toString-和toLocaleString" class="headerlink" title="toString()和toLocaleString()"></a>toString()和toLocaleString()</h4><ul>
+<li>该方法将数组的每个元素转化为字符串，并且输出用逗号分隔的字符串列表。toString()与不使用任何参数调用join()方法返回的字符串是一样的。</li>
+</ul>
+</li>
+<li><h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h4><ul>
+<li>forEach()方法从头至尾遍历数组，为每个元素调用指定的函数。传递的函数将作为forEach()的第一个参数。然后forEach()使用三个参数调用该函数：数组元素、元素的索引和数组本身。</li>
+<li>注意，forEach()无法在所有元素都传递给调用的函数之前终止遍历。也就是说，没有像for循环中使用的相应的break语句。</li>
+<li>如果要提前终止，必须把forEach()方法放在一个try块中，并能抛出一个异常。如果forEach()调用的函数抛出forEach.break异常，循环会提前终止。</li>
+</ul>
+</li>
+<li><h4 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h4><ul>
+<li>map()方法将调用的数组的每个元素传递给指定的函数，并返回一个数组，它包含该函数的返回值。</li>
+<li>注意，传递给map()的函数应该有返回值，map()返回的是新数组，它不修改调用的数组。</li>
+</ul>
+</li>
+<li><h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><ul>
+<li>filter()方法返回的数组元素是调用的数组的一个子集。传递的函数是用来逻辑判断的:该函数返回true或false。如果返回值为true或者能够转化为true的值，那么该元素就被添加到一个作为返回值得数组中。</li>
+<li>注意，filter()会跳过稀疏数组中缺少的元素，它的返回数组总是稠密的。为了压缩稀疏数组的空缺，代码如下：<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> dens = sparse.filter(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="every-和some"><a href="#every-和some" class="headerlink" title="every()和some()"></a>every()和some()</h4><ul>
+<li>every()和some()方式是数组的逻辑判定：它们对数组元素应用指定的函数进行判定，返回true或false。</li>
+<li>every()方法：当且仅当针对数组中的所有元素调用判定函数都返回true,它才返回true。</li>
+<li>some()方法：当数组中至少有一个元素调用判定函数返回true,它就返回true。</li>
+<li>注意，一旦every()和some()确认该返回什么值它们就会停止遍历数组元素，some()在判定函数第一次返回true后就返回true。every()恰好相反。利用every()和some()的这种特性，可以实现只遍历数组的部分元素。</li>
+</ul>
+</li>
+<li><h4 id="reduce-和reduceRight"><a href="#reduce-和reduceRight" class="headerlink" title="reduce()和reduceRight()"></a>reduce()和reduceRight()</h4><ul>
+<li><p>reduce()和reduceRight()方法使用指定的函数将数组元素进行组合，生成单个值。这在函数式编程中是常见的操作，也可以称为“注入”和“折叠”。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> sum = a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x+y;</div><div class="line">&#125;,<span class="number">0</span>); <span class="comment">// 数组求和</span></div><div class="line"><span class="keyword">var</span> product = a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x*y;</div><div class="line">&#125;,<span class="number">1</span>); <span class="comment">// 数组求积</span></div><div class="line"><span class="keyword">var</span> max = a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (x&gt;y)?x:y;</div><div class="line">&#125;); <span class="comment">// 求最大值</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>reduce()需要两个参数，第一个是执行化简操作的函数。化简函数的任务就是用某种方法把两个值组合或化简为一个值，并返回化简后的值。第二个（可选）的参数是一个传递给函数的初始值。</p>
+</li>
+<li>reduce()方法中传递的函数的第一个参数是到目前为止的化简操作累计的结果。数组元素、元素的索引和数组本身将作为第2~4个参数传递给函数。第一次调用函数的时候，第一个参数是一个初始值，它就是传递给reduce()的第二个参数。在接下来的调用中，这个值就是上一次简化函数的返回值。当不指定初始值调用reduce()时，它将使用数组的第一个元素作为其初始值。上面的求和与求积的例子中，可以省略初始值参数。</li>
+<li>reduceRight()的工作原理和reduce()一样，不同的是它按照数组索引从高到低处理数组。</li>
+</ul>
+</li>
+<li><h4 id="indexOf-和lastIndexOf"><a href="#indexOf-和lastIndexOf" class="headerlink" title="indexOf()和lastIndexOf()"></a>indexOf()和lastIndexOf()</h4><ul>
+<li>indexOf()和lastIndexOf()搜索整个数组中具有给定值的元素，返回找到的第一个元素的索引或者如果没有找到就返回-1。indexOf()从头至尾搜索，而lastIndexOf()则反向搜索。</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><h4 id="判定一个未知的对象是否是数组。"><a href="#判定一个未知的对象是否是数组。" class="headerlink" title="判定一个未知的对象是否是数组。"></a>判定一个未知的对象是否是数组。</h4><ul>
+<li>Array.isArray()方法。</li>
+<li>instanceof 操作符。(不可靠)原因：在Web浏览器中有可能有多个窗口和窗体(frame)存在。每个窗口都有自己的JavaScript环境，有自己的全局对象。并且，每个全局对象都有自己的一组构造函数。因此一个窗体中的对象将不可能是另外窗体中的构造函数的实例。</li>
+<li>Object.prototype.toString.call(o)。检测对象的类属性。返回[object Array]。</li>
+</ul>
+<h2 id="第八章-函数"><a href="#第八章-函数" class="headerlink" title="第八章 函数"></a>第八章 函数</h2><h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><p>有四种方式来调用JavaScript函数</p>
+<ul>
+<li>作为函数</li>
+<li>作为方法</li>
+<li>作为构造函数</li>
+<li>通过它们的call()和apply()方法间接调用。</li>
+</ul>
+<h4 id="作为函数调用"><a href="#作为函数调用" class="headerlink" title="作为函数调用"></a>作为函数调用</h4><ul>
+<li>根据ES3和非严格ES5对函数调用的规定，调用上下文(this值)是全局对象。然而，在严格模式下(use strict)，调用上下文是undefined。</li>
+<li>以函数形式调用的函数通常不使用this关键字。不过，“this”可以用来判断当前是否是严格模式。<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> strict = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> !<span class="keyword">this</span>;&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="作为方法调用"><a href="#作为方法调用" class="headerlink" title="作为方法调用"></a>作为方法调用</h4><ul>
+<li>一个方法无非是保存在一个对象的属性里的JavaScript函数。一个方法调用表达式中的函数表达式本身就是一个属性访问表达式，这意味着该函数被当做一个方法，而不是作为一个普通函数来调用。</li>
+<li>方法调用和函数调用有一个重要的区别，即:调用上下文。属性访问表达式由两部分组成:一个对象(o)和属性名称(f)。像o.f这样的方法调用表达式里，对象o成为调用上下文，函数体可以使用关键字this引用该对象。</li>
+<li><h5 id="方法链"><a href="#方法链" class="headerlink" title="方法链"></a>方法链</h5><ul>
+<li>当方法的返回值是一个对象，这个对象还可以再调用它的方法。这种方法调用序列中每次的调用结果都是另外一个表达式的组成部分。经典的像Jquery库的链式调用。</li>
+<li>当方法不需要返回值时，最好直接返回this。在这种编程风格中，只要指定一次要调用的对象即可。</li>
+</ul>
+</li>
+<li><p>需要注意的是，this是一个关键字，不是变量，也不是属性名，JS语法不允许给this赋值。和变量不同，关键字this没有作用域的限制，嵌套的函数不会从调用它的函数中继承this。如果嵌套函数作为方法调用，其this值指向调用它的对象。如果嵌套函数作为函数调用，其this值不是全局对象(非严格模式下)就是undefined(严格模式下)。如果你想在嵌套函数内访问外部函数的this值，需要将this的值保存在一个变量里，这个变量和内部函数都同在一个作用域内。通常使用变量self来保存this。</p>
+</li>
+</ul>
+<h4 id="作为构造函数调用"><a href="#作为构造函数调用" class="headerlink" title="作为构造函数调用"></a>作为构造函数调用</h4><ul>
+<li>如果函数或者方法调用之前带有关键字new，它就构成构造函数调用。构造函数调用和普通的函数调用以及方法调用在实参处理，调用上下文和返回值方面都有不同。</li>
+<li>凡是没有形参的构造函数调用都可以省略圆括号。构造函数调用创建一个新的对象，这个对象继承自构造函数的prototype属性。构造函数试图初始化这个新创建的对象，并将这个对象用作其调用上下文，因此构造函数可以使用this关键字来引用这个新创建的对象。</li>
+<li>注意，尽管构造函数看起来像是一个方法调用，它依然会使用这个新对象作为调用上下文。也就是说，在表达式new o.m()中，调用上下文并不是o。</li>
+<li>构造函数通常不会使用return 关键字，它们通常初始化新对象，当构造函数的函数体执行完毕后，它会显式返回。在这种情况下，构造函数调用表达式的计算结果就是这个新对象。然而如果构造函数显式的使用return返回一个对象，那么调用表达式的值就是这个对象。如果构造函数使用return语句但没有指定返回值，或者返回一个原始值，那么这时将忽略返回值，同时使用这个新对象作为调用结果。</li>
+</ul>
+<h4 id="间接调用"><a href="#间接调用" class="headerlink" title="间接调用"></a>间接调用</h4><ul>
+<li>JS中的函数也是对象，函数对象也有自己的方法。其中的两个方法call()和apply()可以用来间接地调用函数。两个方法都可以显式的指定调用所需的this值。也就是说，任何函数可以作为任何对象的方法来调用，哪怕这个函数不是那个对象的方法。两个函数都可以指定调用的实参。call()方法使用它自有的实参列表作为函数的实参，apply()方法则要求以数组的形式传入参数。</li>
+</ul>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><blockquote>
+<p>和其他大多数现代编程语言一样，JavaScript也采用词法作用域。也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JS函数对象内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象可以通过作用域链相互关联起来，函数体内的变量都可以保存在函数作用域内。这种特性在计算机科学文献中称为“闭包”。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>; <span class="comment">// 全局变量</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>; <span class="comment">//局部变量</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> scope&#125;; <span class="comment">//在作用域中返回这个值</span></div><div class="line">    <span class="keyword">return</span> f();</div><div class="line">&#125;</div><div class="line">checkScope(); <span class="comment">// =&gt;"local scope" // 该函数执行返回的是内部函数f执行的结果即f()。而f执行所在的作用域为函数内部作用域，根据作用域链的原则scope的值“local scope”</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>; <span class="comment">// 全局变量</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>; <span class="comment">//局部变量</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> scope&#125;; <span class="comment">//在作用域中返回这个值</span></div><div class="line">    <span class="keyword">return</span> f;</div><div class="line">&#125;</div><div class="line">checkScope()(); <span class="comment">// =&gt;"local scope" // 回想一下词法作用域的基本原则：JavaScript函数的执行用到了作用域链，这个作用域链是函数定义的时候创建的。</span></div><div class="line"><span class="comment">//嵌套的函数f()定义在这个作用域中，其中的变量scope一定是局部变量，不管在何时何地地执行函数f()。这种作用域的绑定在执行f()时依然有效。</span></div><div class="line"><span class="comment">//闭包可以捕捉到局部变量(和参数)，并一直保存下来，看起来像这些变量绑定到了在其中定义它们的外部函数。</span></div></pre></td></tr></table></figure>
+<h3 id="函数属性、方法和构造函数"><a href="#函数属性、方法和构造函数" class="headerlink" title="函数属性、方法和构造函数"></a>函数属性、方法和构造函数</h3><ul>
+<li>在函数体内，arguments.length表示传入函数的实参的个数。而函数本身的length属性则有着不同的含义。函数的length属性是只读属性，它代表函数定义时给出的实参个数，通常也是在函数调用时期望传入函数的实参个数。</li>
+<li><h4 id="prototype属性"><a href="#prototype属性" class="headerlink" title="prototype属性"></a>prototype属性</h4>  每一个函数都包含一个prototype属性，这个属性是指向一个对象的引用，这个对象称作“原型对象”。当将函数用做构造函数的时候，新创建的对象将会从原型对象上继承属性。</li>
+<li><h4 id="call-方法和apply-方法。"><a href="#call-方法和apply-方法。" class="headerlink" title="call()方法和apply()方法。"></a>call()方法和apply()方法。</h4><p>  call()和apply()方法的第一个实参是调用函数的母对象，它是调用上下文，在函数体内通过this来获得对它的引用。要想以对象o的方法来调用函数f()，可以这样使用call()和apply()。</p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">f.call(o);</div><div class="line">f.apply(o);</div></pre></td></tr></table></figure>
+<p>  在ES5的严格模式中，call()和apply()的第一个参数都会变为this的值，哪怕传入的实参是原始值甚至是null或undefined。在ES3和非严格模式下，传入的null和undefined都会被全局对象代替，而其他原始值则会被相应的包装对象所替代。
+  <br></p>
+<ul>
+<li>对于call()来说，第一个调用上下文实参之后的所有实参就是要传入的待调用函数的值。</li>
+<li><p>apply()方法和call()类似，但传入实参的形式和call()</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 对象o中名为m()的方法替换为另一个方法</span></div><div class="line"><span class="comment">// 可以在调用原始的方法之前和之后记录日志信息</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">trace</span>(<span class="params">o,m</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> original = o[m]; <span class="comment">// 在闭包中保存原始方法</span></div><div class="line">    o[m] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'entering:'</span>, m); <span class="comment">//输出日志消息</span></div><div class="line">        <span class="keyword">var</span> result = original.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="comment">// 调用原始函数</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'exiting:'</span>, m); <span class="comment">//输出日志消息</span></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>trace()函数接收两个函数，一个对象和一个方法名，它将指定的方法替换为一个新方法，这个新方法是“包裹”原始方法的另一个泛函数。</p>
+</li>
+</ul>
+</li>
+<li><h4 id="bind-方法"><a href="#bind-方法" class="headerlink" title="bind()方法"></a>bind()方法</h4><p>  bind()方法的主要作用是将函数绑定至某个对象。当在函数f()上调用bind()方法并传入一个对象作为参数，这个方法将返回一个新的函数。调用新的函数将会把原始的函数f()当做o的方法来调用。传入新函数的任何实参都将传入原始函数。</p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">y</span>)</span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.x + y;&#125;; <span class="comment">//这是一个待绑定的函数</span></div><div class="line"><span class="keyword">var</span> o = &#123; <span class="attr">x</span>: <span class="number">1</span>&#125;; <span class="comment">//将要绑定的对象</span></div><div class="line"><span class="keyword">var</span> g = f.bind(o); <span class="comment">// 通过调用g(x)来调用o.f(x)</span></div><div class="line">g(<span class="number">2</span>) <span class="comment">// =&gt;3</span></div></pre></td></tr></table></figure>
+<p>  可以通过如下代码轻易地实现这种绑定:</p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//返回一个函数，通过调用它来调用o中的方法f()，传递它所有的实参</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">f, o</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(f.bind) <span class="keyword">return</span> f.bind(o); <span class="comment">// 如果bind方法存在，就使用bind()方法。</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> f.apply(o, <span class="built_in">arguments</span>);</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  ES5中的bind()方法不仅仅是将函数绑定至一个对象，它还附带一些其他应用:除了第一个参数之外，传入bind()的实参也会绑定至this，这个称为”柯里化”。</p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;<span class="keyword">return</span> x + y;&#125;<span class="comment">//返回两个实参的和值</span></div><div class="line"><span class="comment">// 创建一个类似sum的新函数，但this的值绑定到null</span></div><div class="line"><span class="comment">// 并且第一个参数绑定到1，这个新的函数期望只传入一个实参</span></div><div class="line"><span class="keyword">var</span> succ = sum.bind(<span class="literal">null</span>, <span class="number">1</span>);</div><div class="line">succ(<span class="number">2</span>); <span class="comment">// =&gt; 3: x绑定到1，并传入2作为实参y</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">y, z</span>)</span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.x + y + z&#125;; <span class="comment">// 另外一个做累加计算的函数</span></div><div class="line"><span class="keyword">var</span> g = f.bind(&#123;<span class="attr">x</span>:<span class="number">1</span>&#125;,<span class="number">2</span>); <span class="comment">// 绑定this和y。</span></div><div class="line">g(<span class="number">3</span>) <span class="comment">// =&gt; 6 : this.x绑定到1， y绑定到2，z绑定到3;</span></div></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//ES3版本实现的Function.bind()方法</span></div><div class="line"><span class="keyword">if</span>(!<span class="built_in">Function</span>.prototype.bind)&#123;</div><div class="line">    <span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params">o, <span class="regexp">/* ,args */</span></span>)</span>&#123;</div><div class="line">        <span class="comment">// 将this 和 arguments的值保存至变量中以便在后面嵌套的函数中可以使用它们</span></div><div class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>, boundArgs = <span class="built_in">arguments</span>;</div><div class="line"></div><div class="line">        <span class="comment">// bind()方法的返回值是一个函数</span></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="comment">// 创建一个实参列表，将传入bind()的第二个及后续的实参都传入这个函数</span></div><div class="line">            <span class="keyword">var</span> args = [], i;</div><div class="line">            <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; boundArgs.length;i++)&#123;</div><div class="line">                args.push(boundArgs[i]);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="built_in">arguments</span>.length;i++)&#123;</div><div class="line">                args.push(<span class="built_in">arguments</span>[i]);</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 现在将self作为o的方法来调用，传入这些实参</span></div><div class="line">            <span class="keyword">return</span> self.apply(o, args);</div><div class="line">        &#125;;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h3><h4 id="使用函数处理数组"><a href="#使用函数处理数组" class="headerlink" title="使用函数处理数组"></a>使用函数处理数组</h4><p>使用数组方法map()和reduce()来实现计算数组元素的平均值和标准差。
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 首先定义两个简单的函数</span></div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123; <span class="keyword">return</span> x+y;&#125;;</div><div class="line"><span class="keyword">var</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x*x;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 配合数组方法使用计算出平均数和标准差</span></div><div class="line"><span class="keyword">var</span> data = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>];</div><div class="line"><span class="keyword">var</span> mean = data.reduce(sum)/data.length;</div><div class="line"><span class="keyword">var</span> deviations = data.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x-mean;&#125;);</div><div class="line"><span class="keyword">var</span> stddev = <span class="built_in">Math</span>.sqrt(deviations.map(square).reduce(sum)/(data.length - <span class="number">1</span>));</div></pre></td></tr></table></figure></p>
+<p>ES3并不包含这些数组方法，如果不存在内置方法的话我们可以自定义map和reduce函数；
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 对于每个数组元素调用函数f()，并返回一个结果数组</span></div><div class="line"><span class="comment">// 如果Array.prototype.map定义了的话，就使用这个方法</span></div><div class="line"><span class="keyword">var</span> map = <span class="built_in">Array</span>.prototype.map?<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;a, f&#125;&#123;<span class="keyword">return</span> a.map(f);&#125;</div><div class="line">                             :<span class="function"><span class="keyword">function</span>(<span class="params">a, f</span>)</span>&#123;</div><div class="line">                                <span class="keyword">var</span> results = [];</div><div class="line">                                <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=a.length; i&lt; len;i++)&#123;</div><div class="line">                                    <span class="keyword">if</span>(i <span class="keyword">in</span> a)&#123;</div><div class="line">                                        results[i] = f.call(<span class="literal">null</span>, a[i],i,a);</div><div class="line">                                    &#125;</div><div class="line">                                &#125;</div><div class="line">                                <span class="keyword">return</span> results;</div><div class="line">                             &#125;;</div><div class="line"></div><div class="line"><span class="comment">// 使用函数f()和可选的初始值将数组a减至一个值</span></div><div class="line"><span class="comment">// 如果Array.prototype.reduce存在的话,就是用这个方法</span></div><div class="line"><span class="keyword">var</span> reduce = <span class="built_in">Array</span>.prototype.reduce</div><div class="line">    ? <span class="function"><span class="keyword">function</span>(<span class="params">a, f, initial</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">arguments</span>.length &gt; <span class="number">2</span>) &#123; <span class="comment">// 如果传入了一个初始值的话</span></div><div class="line">            <span class="keyword">return</span> a.reduce(f, initial);</div><div class="line">        &#125; <span class="keyword">else</span>&#123; <span class="comment">// 否则没有初始值</span></div><div class="line">            <span class="keyword">return</span> a.reduce(f);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    : <span class="function"><span class="keyword">function</span>(<span class="params">a, f, initial</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> i = <span class="number">0</span>, len = a.length,accumulator;</div><div class="line">        <span class="comment">// 以特定的初始值开始，否则第一个值取自a</span></div><div class="line">        <span class="keyword">if</span>(<span class="built_in">arguments</span>.length &gt; <span class="number">2</span>)&#123;</div><div class="line">            accumulator = initial;</div><div class="line">        &#125;<span class="keyword">else</span>&#123; <span class="comment">// 找到数组中第一个已定义的索引</span></div><div class="line">            <span class="keyword">if</span>(len == <span class="number">0</span>) <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</div><div class="line">            <span class="keyword">while</span>(i &lt; len)&#123;</div><div class="line">                <span class="keyword">if</span>(i <span class="keyword">in</span> a) &#123;</div><div class="line">                    accumulator = a[i++];</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125; <span class="keyword">else</span>&#123;</div><div class="line">                    i++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(i == len)&#123;</div><div class="line">                <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 对于数组中剩下的元素依次调用f()</span></div><div class="line">        <span class="keyword">while</span>(i &lt; len)&#123;</div><div class="line">            <span class="keyword">if</span>(i <span class="keyword">in</span> a)&#123;</div><div class="line">                accumulator = f.call(<span class="literal">undefined</span>, accumulator, a[i], i, a);</div><div class="line">            &#125;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> accumulator;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><blockquote>
+<p>所谓高阶函数就是操作函数的函数，它接受一个或多个函数作为参数，并返回一个新函数。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 下面的mapper()函数，它也是接收一个函数作为参数，并返回一个新函数，这个新函数将一个数组映射到另一个使用这个函数的数组上。</span></div><div class="line"><span class="comment">// 这个函数使用了之前定义的map()函数。因为当不通过new运算符调用这些函数时，它们会作为类型转换函数。</span></div><div class="line"><span class="comment">// 所返回的函数的参数应当是一个实参数组，并对每个数组元素执行函数f()；</span></div><div class="line"><span class="comment">// 并返回所有计算结果组成的数组。</span></div><div class="line"><span class="comment">//可以对比一下这个函数和上文提到的map()函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapper</span>(<span class="params">f</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> map(a, f);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> increment = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x+<span class="number">1</span>; &#125;;</div><div class="line"><span class="keyword">var</span> incrementer = mapper(increment);</div><div class="line">incrementer([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]); =&gt; [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div></pre></td></tr></table></figure>
+<h4 id="不完全函数"><a href="#不完全函数" class="headerlink" title="不完全函数"></a>不完全函数</h4><blockquote>
+<p>作者在本节讨论的是一种函数变换技巧，即把一次完整的函数调用拆成多次函数调用，每次传入的实参都是完整实参的一部分，每个拆分开的函数叫做不完全函数，每次函数调用叫做不完全调用。这种函数变换的特点是每次调用都返回一个函数，直到得到最终运行结果为止。
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 实现一个工具函数将类数组对象转换为真正的数组</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">array</span>(<span class="params">a, n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.call(a, n||<span class="number">0</span>);</div><div class="line">&#125;;</div><div class="line"><span class="comment">//这个函数的实参传递至左侧</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">partialLeft</span>(<span class="params">f,..</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>; <span class="comment">// 保存外部实参数组</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> a = array(args,<span class="number">1</span>); <span class="comment">// </span></div><div class="line">        a = a.concat(array(<span class="built_in">arguments</span>)); <span class="comment">// </span></div><div class="line">        <span class="keyword">return</span> f.apply(<span class="keyword">this</span>, a); <span class="comment">//最后基于这个实参列表调用f();</span></div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//这个函数的实参传递至右侧</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">partialRight</span>(<span class="params">f,..</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>; <span class="comment">// 保存外部实参数组</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> a = array(<span class="built_in">arguments</span>); <span class="comment">// 内部参数，即该返回函数调用时传入的参数。partialRight(f)(a,b,c...)</span></div><div class="line">        a = a.concat(array(args,<span class="number">1</span>)); <span class="comment">// 然后从外部第一个args开始添加</span></div><div class="line">        <span class="keyword">return</span> f.apply(<span class="keyword">this</span>, a); <span class="comment">//最后基于这个实参列表调用f();</span></div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 这个函数的实参被用作模板</span></div><div class="line"><span class="comment">// 实参列表中的undefined值都被填充</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">partial</span>(<span class="params">f,...</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>; <span class="comment">// 保存外部实参数组</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> a = array(args,<span class="number">1</span>); <span class="comment">// 从外部args开始</span></div><div class="line">        <span class="keyword">var</span> i=<span class="number">0</span>, j=<span class="number">0</span>;</div><div class="line">        <span class="comment">//遍历args,从内部实参填充undefined值</span></div><div class="line">        <span class="keyword">for</span>(; i &lt; a.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(a[i] === <span class="literal">undefined</span>) &#123;</div><div class="line">                a[i] = <span class="built_in">arguments</span>[j++];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将剩下的内部实参都追加进去</span></div><div class="line">        a = a.concat(array(<span class="built_in">arguments</span>, j));</div><div class="line">        <span class="keyword">return</span> f.apply(<span class="keyword">this</span>, a);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 这个函数带有三个实参</span></div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">x, y, z</span>)</span>&#123; <span class="keyword">return</span> x * (y - z)&#125;;</div><div class="line"><span class="comment">// 注意这三个不完全调用之间的区别</span></div><div class="line">partialLeft(f,<span class="number">2</span>)(<span class="number">3</span>,<span class="number">4</span>)    <span class="comment">// =&gt; 2*(3-4) </span></div><div class="line">partialright(f,<span class="number">2</span>)(<span class="number">3</span>,<span class="number">4</span>)    <span class="comment">// =&gt; 3*(4-2) </span></div><div class="line">partial(f,<span class="literal">undefined</span>,<span class="number">2</span>)(<span class="number">3</span>,<span class="number">4</span>)    <span class="comment">// =&gt; 3*(2-4)</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="记忆"><a href="#记忆" class="headerlink" title="记忆"></a>记忆</h4><p>函数式编程中，有种缓存技巧叫做“记忆”。(记忆只是一种编程技巧，本质上是牺牲算法的空间复杂度以换取更优的时间复杂度，在客户端javascript中代码的执行时间复杂度往往成为瓶颈，因此大多数场景下，这种牺牲空间换取时间的做法以提升程序执行效率的做法是非常可取的)。
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 返回f()的带有记忆功能的版本</span></div><div class="line"><span class="comment">// 只有当f()的实参的字符串表示都不相同时它才会工作</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">memorize</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> cache = &#123;&#125;; <span class="comment">// 将值保存在闭包内。</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">// 将实参转换为字符串形式，并将其用作缓存的键</span></div><div class="line">        <span class="keyword">var</span> key = <span class="built_in">arguments</span>.length + <span class="built_in">Array</span>.prototype.join.call(<span class="built_in">arguments</span>, <span class="string">','</span>);</div><div class="line">        <span class="keyword">if</span>(key <span class="keyword">in</span> cache) &#123;</div><div class="line">            <span class="keyword">return</span> cache[key];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            cache[key] = f.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">            <span class="keyword">return</span> cache[key];</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">memorize()函数创建一个新的对象，这个对象被当做缓存并赋值给一个局部变量，因此对于返回的函数来说它是私有的（在闭包中）。所返回的函数将它的实参数组转换为字符串，并将字符串用作缓存对象的属性名。如果在缓存中存在这个值，则直接返回它。否则调用既定的函数对实参进行计算，将计算结果缓存起来并返回。</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 注意，当我们写一个递归函数时，往往需要实现记忆功能</span></div><div class="line"><span class="keyword">var</span> factorial = memorize(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (n&lt;=<span class="number">1</span>)?<span class="number">1</span> : n*factorial(n<span class="number">-1</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="第九章-类和模块"><a href="#第九章-类和模块" class="headerlink" title="第九章 类和模块"></a>第九章 类和模块</h2><h3 id="类和原型"><a href="#类和原型" class="headerlink" title="类和原型"></a>类和原型</h3>
 
                 <hr>
 
