@@ -37,7 +37,8 @@ $(document).ready(function () {
 // Navigation Scripts to Show Header on Scroll-Up
 jQuery(document).ready(function($) {
     var MQL = 1170;
-
+    var backTop = '<a class="back-top-icon back-top-icon-hide" href="#"><i class="fa fa-arrow-up fa-lg"></i></a>';
+    $('body').append(backTop);
     //primary navigation slide-in effect
     if ($(window).width() > MQL) {
         var headerHeight = $('.navbar-custom').height();
@@ -54,12 +55,21 @@ jQuery(document).ready(function($) {
                     } else {
                         $('.navbar-custom').removeClass('is-visible is-fixed');
                     }
+                    if ($('.back-top-icon').hasClass('back-top-icon-hide')){ 
+                        $('.back-top-icon').removeClass('back-top-icon-hide')
+                    }
                 } else {
                     //if scrolling down...
                     $('.navbar-custom').removeClass('is-visible');
                     if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
+                    if (!$('.back-top-icon').hasClass('back-top-icon-hide')){ 
+                        $('.back-top-icon').addClass('back-top-icon-hide')
+                    }
                 }
                 this.previousTop = currentTop;
+                if (currentTop === 0) { 
+                    $('.back-top-icon').addClass('back-top-icon-hide');
+                }
             });
     }
 });

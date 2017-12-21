@@ -98,3 +98,11 @@ header.intro-header {
     position: fixed;
     top: 0;
 }
+.back-top-icon{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+.back-top-icon-hide{
+    display: none;
+}
