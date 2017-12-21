@@ -11,6 +11,7 @@ header.intro-header {
     /*height: 400px;*/
     background-repeat: no-repeat;
     background-size:100% 100%;
+    /*margin-top: 60px;*/
     /*background-position: 0 -200px;*/
 }
 /*header.intro-header .container{
@@ -77,4 +78,23 @@ header.intro-header {
 }
 .about-wrap .info-wrap .details-wrap .education .study-details{
     padding-right: 100px;
+}
+
+.catalog-container  h5{
+        padding-left:40px;
+}
+.catalog-container  li.active, .catalog-container  li.active a{
+    color: #0085a1 !important;
+}
+.catalog-container  li.h3_nav  a{
+    color: #000 !important;
+    font-size: 16px;
+}
+.catalog-container .catalog-body {
+    max-height: 70vh;
+    overflow: scroll;
+}
+.catalog-fixed{
+    position: fixed;
+    top: 0;
 }

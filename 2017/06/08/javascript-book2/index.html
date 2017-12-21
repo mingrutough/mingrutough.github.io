@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hux-blog.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/mingru-blog.css">    
 
@@ -59,7 +59,7 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top is-visible is-fixed">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -100,14 +100,14 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -196,11 +196,12 @@
 <article>
     <div class="container">
         <div class="row">
-
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
+                col-lg-8
+                col-md-8
+                col-md-offset-1
+                col-md-offset-1                                                
                 post-container">
 
                 <img title="jsDefinetiveGuide.jpg" alt="jsDefinetiveGuide.jpg" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/jsDefinetiveGuide.jpg">
@@ -565,7 +566,35 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 <p>不要关注“对象的类是什么”，而是关注“对象能做什么”。这种思考问题的方式在Python和Ruby中非常普遍，称为“鸭式辩型”。</p>
 </blockquote>
 <h3 id="JavaScript中的面向对象技术"><a href="#JavaScript中的面向对象技术" class="headerlink" title="JavaScript中的面向对象技术"></a>JavaScript中的面向对象技术</h3><h4 id="一个例子-集合类"><a href="#一个例子-集合类" class="headerlink" title="一个例子:集合类"></a>一个例子:集合类</h4><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Set</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 这是一个构造函数</span></div><div class="line">    <span class="keyword">this</span>.values = &#123;&#125;;  <span class="comment">// 集合数据保存在对象的属性里</span></div><div class="line">    <span class="keyword">this</span>.n = <span class="number">0</span>; <span class="comment">// 集合中值的个数</span></div><div class="line">    <span class="keyword">this</span>.add.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="comment">// 把所有参数都添加进这个集合</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 将每个参数都添加至集合中</span></div><div class="line"><span class="built_in">Set</span>.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = <span class="built_in">arguments</span>.length; i &lt; len; i++)&#123;</div><div class="line">        <span class="keyword">var</span> val = <span class="built_in">arguments</span>[i];</div><div class="line">        <span class="keyword">var</span> str = <span class="built_in">Set</span>._v2s(val); <span class="comment">//转换为字符串</span></div><div class="line">        <span class="keyword">if</span>(!<span class="keyword">this</span>.values.hasOwnProperty(str))&#123; <span class="comment">//如果不在集合中</span></div><div class="line">            <span class="keyword">this</span>.values[str] = val; <span class="comment">// 将字符串和值对应起来</span></div><div class="line">            <span class="keyword">this</span>.n++; <span class="comment">// 集合中值得计数加一</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 从集合删除元素，这些元素由参数指定</span></div><div class="line"><span class="built_in">Set</span>.prototype.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = <span class="built_in">arguments</span>.length; i &lt; len; i++)&#123;</div><div class="line">        <span class="keyword">var</span> val = <span class="built_in">arguments</span>[i];</div><div class="line">        <span class="keyword">var</span> str = <span class="built_in">Set</span>._v2s(val); <span class="comment">//转换为字符串</span></div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.values.hasOwnProperty(str))&#123; <span class="comment">//如果它在集合中</span></div><div class="line">            <span class="keyword">delete</span> <span class="keyword">this</span>.values[str]; <span class="comment">//删除它</span></div><div class="line">            <span class="keyword">this</span>.n--; <span class="comment">// 集合中值得计数减一</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// 支持链式方法调用</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"> <span class="comment">// 如果集合中包含这个值，则返回true，否则，返回false</span></div><div class="line"> <span class="built_in">Set</span>.prototype.contains = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.values.hasOwnProperty(<span class="built_in">Set</span>._v2s(value));</div><div class="line"> &#125;</div><div class="line"></div><div class="line"><span class="comment">// 返回集合的大小</span></div><div class="line"> <span class="built_in">Set</span>.prototype.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.n;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"><span class="comment">// 遍历集合中的所有元素，在指定的上下文中调用f</span></div><div class="line"> <span class="built_in">Set</span>.prototype.foreach = <span class="function"><span class="keyword">function</span>(<span class="params">f, context</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> s <span class="keyword">in</span> <span class="keyword">this</span>.values)&#123; <span class="comment">// 遍历集合中所有字符串</span></div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.values.hasOwnProperty(s))&#123; <span class="comment">// 忽略继承的属性</span></div><div class="line">            f.call(context, <span class="keyword">this</span>.values[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="comment">// 这是一个内部函数，用以将任意JavaScript值和唯一的字符串对应起来</span></div><div class="line"><span class="built_in">Set</span>._v2s = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">    。。。。</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="标准转换方法"><a href="#标准转换方法" class="headerlink" title="标准转换方法"></a>标准转换方法</h4>
+<h4 id="标准转换方法"><a href="#标准转换方法" class="headerlink" title="标准转换方法"></a>标准转换方法</h4><ul>
+<li>toString()。在希望使用字符串的地方用到对象的话，JavaScript会自动调用该方法。</li>
+<li>toLocalString()。它与toString()极为类似，它是以本地敏感性的方式来将对象转换为字符串。</li>
+<li>valueOf()。它用来将对象转换为原始值。</li>
+<li>toJSON()。这个方法是由JSON.stringfy()自动调用的。该方法可自定义。</li>
+</ul>
+<h3 id="子类"><a href="#子类" class="headerlink" title="子类"></a>子类</h3><h4 id="定义子类"><a href="#定义子类" class="headerlink" title="定义子类"></a>定义子类</h4><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 用一个简单的函数创建简单的子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineSubclass</span>(<span class="params">superClass, <span class="regexp">//</span> 父类的构造函数</span></span></div><div class="line"><span class="function"><span class="params">                        constructor, <span class="regexp">//</span> 新的子类的构造函数</span></span></div><div class="line"><span class="function"><span class="params">                        methods,     <span class="regexp">//</span> 实例方法: 复制至原型中</span></span></div><div class="line"><span class="function"><span class="params">                        statics     <span class="regexp">//</span> 类属性:复制至构造函数中</span></span></div><div class="line"><span class="function"><span class="params">                                </span>)</span>&#123;</div><div class="line">    <span class="comment">//建立子类的原型对象</span></div><div class="line">    <span class="keyword">constructor</span>.prototype = inherit(superClass.prototype);</div><div class="line">    <span class="keyword">constructor</span>.prptotype.<span class="keyword">constructor</span> = <span class="keyword">constructor</span>;</div><div class="line"></div><div class="line">    // 像对常规类一样复制方法和类属性</div><div class="line">    if(methods) extend(<span class="keyword">constructor</span>.prototype, methods);</div><div class="line">    if(statics) extend(<span class="keyword">constructor</span>, statics);</div><div class="line">    // 返回这个类</div><div class="line">    return <span class="keyword">constructor</span>;</div><div class="line">&#125;;  </div><div class="line"></div><div class="line">// 也可以通过父类构造函数的方法来做到这一点</div><div class="line">```js</div><div class="line">Function.prototype.extend = function(<span class="keyword">constructor</span>, methods,statics)&#123;</div><div class="line">    <span class="keyword">return</span> defineSubclass(<span class="keyword">this</span>,<span class="keyword">constructor</span>, methods,statics);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="构造函数和方法链"><a href="#构造函数和方法链" class="headerlink" title="构造函数和方法链"></a>构造函数和方法链</h4><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 在子类中调用父类的构造函数和方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">NonNullSet</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 仅链接到父类</span></div><div class="line">    <span class="comment">// 作为普通函数调用父类的构造函数来初始化通过该函数调用创建的对象</span></div><div class="line">    <span class="built_in">Set</span>.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">NonNullSet.prototype = inherit(<span class="built_in">Set</span>.prototype);</div><div class="line">NonNullSet.prototype.constructor = NonNullSet;</div><div class="line"></div><div class="line"><span class="comment">// 重写add()方法。</span></div><div class="line">NonNullSet.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 检查参数是不是null或undefined</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; <span class="built_in">arguments</span>.length;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">arguments</span>[i] == <span class="literal">null</span>)&#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'can'</span>t add <span class="literal">null</span> or <span class="literal">undefined</span> ...);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 调用父类的add()方法以执行实际插入操作</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Set</span>.prototype.add.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="ES5中的类"><a href="#ES5中的类" class="headerlink" title="ES5中的类"></a>ES5中的类</h3><blockquote>
+<p>ES5中给属性特性增加了方法支持(getter、setter、可枚举性、可写性、可配置性)，而且增加了对象可扩展性的限制。这些东西可以使得我们的类更加健壮。</p>
+</blockquote>
+<ul>
+<li>让属性不可枚举</li>
+<li>定义不可变的类</li>
+<li>封装对象状态(ES3中的一个缺点是这些私有状态的存取器方法是可以替换的。在ES5中，可以通过定义属性描述符对象以及属性getter和setter方法将状态变量更健壮地封装起来)</li>
+<li>防止类的扩展。Object.preventExtensions()可以将对象设置为不可扩展的。</li>
+</ul>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ul>
+<li>用做命名空间的对象(使用一个对象作为命名空间，它将函数和值作为命名空间对象属性存储起来)</li>
+<li>作为私有命名空间的函数</li>
+</ul>
+<h2 id="第十三章-Web浏览器中的JavaScript"><a href="#第十三章-Web浏览器中的JavaScript" class="headerlink" title="第十三章 Web浏览器中的JavaScript"></a>第十三章 Web浏览器中的JavaScript</h2><h3 id="客户端JavaScript"><a href="#客户端JavaScript" class="headerlink" title="客户端JavaScript"></a>客户端JavaScript</h3><blockquote>
+<p>Window对象是所有客户端JavaScript特性和API的主要接入点。它表示Web浏览器的一个窗口或窗体，并且可以用标识符window来引用它。
+<br>
+Window对象中其中一个最重要的属性是document,它引用Document对象，后者表示窗口中的文档。
+<br>
+Window、Document和Element对象上另一个重要的属性集合是事件处理程序相关的属性。可以在脚本中为之绑定一个函数，这个函数会在某个事件发生时以异步的方式调用。事件处理程序可以让JavaScript代码修改窗口、文档和组成文档的元素的行为。</p>
+</blockquote>
+
 
                 <hr>
 
@@ -590,6 +619,23 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 
             </div>
     <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-3
+                col-md-3
+                col-md-offset-0
+                col-md-offset-0
+                hidden-xs	
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
     <!-- Sidebar Container -->
@@ -648,14 +694,16 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
+    // async("https://cdn.bootcss.com/anchor-js/4.1.0/anchor.min.js",function(){
+    //     anchors.options = {
+    //       visible: 'always',
+    //       placement: 'left',
+    //       icon: ''
+    //     };
+    //     // anchors.add();
+    //     // anchors.add('.post-container h1, .post-container h2, .post-container h3, .post-container h4');
+    //     simpleNav();
+    // })
 </script>
 <style>
     /* place left on bigger screen */
@@ -668,6 +716,7 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
         }
     }
 </style>
+
 
 
 
@@ -717,9 +766,7 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 <script src="/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js"></script>
-
-
+<script src="/js/hux-blog.js"></script>
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -784,6 +831,68 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 
 <!-- Side Catalog -->
 
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        console.log(a);
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        // $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: true,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 500,
+            scrollOffset: 0,
+            scrollThreshold: .5,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });    
+    var catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    var catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    navFixed();
+    $(document).on('scroll',navFixed);
+    function navFixed(){ // 根据当前页面滚动情况固定导航栏
+        var scrollHeight = $(document).scrollTop();         
+        if(scrollHeight > catTopDis){
+            if(!$('.catalog-container').hasClass('catalog-fixed')) {
+                $('.catalog-container').addClass('catalog-fixed').css('left',catLeftDis); ;
+            } 
+                
+        } else{
+            if($('.catalog-container').hasClass('catalog-fixed')) {                       
+                $('.catalog-container').removeClass('catalog-fixed').css('left',0); ;
+
+            } 
+        }
+    }
+</script>
 
 
 

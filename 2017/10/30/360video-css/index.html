@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hux-blog.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/mingru-blog.css">    
 
@@ -59,7 +59,7 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top is-visible is-fixed">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -100,14 +100,14 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -198,11 +198,12 @@
 <article>
     <div class="container">
         <div class="row">
-
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
+                col-lg-8
+                col-md-8
+                col-md-offset-1
+                col-md-offset-1                                                
                 post-container">
 
                 <p><a href="https://t.75team.com/" target="_blank" rel="external">奇舞学院</a></p>
@@ -433,6 +434,23 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
             </div>
     <!-- Side Catalog Container -->
         
+            <div class="
+                col-lg-3
+                col-md-3
+                col-md-offset-0
+                col-md-offset-0
+                hidden-xs	
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
 
     <!-- Sidebar Container -->
 
@@ -492,14 +510,16 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
+    // async("https://cdn.bootcss.com/anchor-js/4.1.0/anchor.min.js",function(){
+    //     anchors.options = {
+    //       visible: 'always',
+    //       placement: 'left',
+    //       icon: ''
+    //     };
+    //     // anchors.add();
+    //     // anchors.add('.post-container h1, .post-container h2, .post-container h3, .post-container h4');
+    //     simpleNav();
+    // })
 </script>
 <style>
     /* place left on bigger screen */
@@ -512,6 +532,7 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
         }
     }
 </style>
+
 
 
 
@@ -561,9 +582,7 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
 <script src="/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js"></script>
-
-
+<script src="/js/hux-blog.js"></script>
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -628,6 +647,68 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
 
 <!-- Side Catalog -->
 
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        console.log(a);
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        // $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: true,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 500,
+            scrollOffset: 0,
+            scrollThreshold: .5,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });    
+    var catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    var catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    navFixed();
+    $(document).on('scroll',navFixed);
+    function navFixed(){ // 根据当前页面滚动情况固定导航栏
+        var scrollHeight = $(document).scrollTop();         
+        if(scrollHeight > catTopDis){
+            if(!$('.catalog-container').hasClass('catalog-fixed')) {
+                $('.catalog-container').addClass('catalog-fixed').css('left',catLeftDis); ;
+            } 
+                
+        } else{
+            if($('.catalog-container').hasClass('catalog-fixed')) {                       
+                $('.catalog-container').removeClass('catalog-fixed').css('left',0); ;
+
+            } 
+        }
+    }
+</script>
 
 
 

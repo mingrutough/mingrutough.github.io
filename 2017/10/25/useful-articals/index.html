@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hux-blog.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/mingru-blog.css">    
 
@@ -59,7 +59,7 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top is-visible is-fixed">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -100,14 +100,14 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -196,11 +196,12 @@
 <article>
     <div class="container">
         <div class="row">
-
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
+                col-lg-8
+                col-md-8
+                col-md-offset-1
+                col-md-offset-1                                                
                 post-container">
 
                 <h3 id="1-很详细的markdown用法介绍"><a href="#1-很详细的markdown用法介绍" class="headerlink" title="1.很详细的markdown用法介绍"></a><a href="http://xianbai.me/learn-md/article/about/readme.html" target="_blank">1.很详细的markdown用法介绍</a></h3><h3 id="2-npm-中如何下载特定的组件版本"><a href="#2-npm-中如何下载特定的组件版本" class="headerlink" title="2.npm 中如何下载特定的组件版本"></a><a href="http://imweb.io/topic/57237cd08a0819f17b7d9d36" target="_blank" rel="external">2.npm 中如何下载特定的组件版本</a></h3><blockquote>
@@ -283,7 +284,9 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 <h3 id="5-Web开发中的“黑话”"><a href="#5-Web开发中的“黑话”" class="headerlink" title="5. Web开发中的“黑话”"></a><a href="https://segmentfault.com/a/1190000002593432" target="_blank" rel="external">5. Web开发中的“黑话”</a></h3><blockquote>
 <h5 id="Polyfill"><a href="#Polyfill" class="headerlink" title="Polyfill"></a>Polyfill</h5><p>Polyfill的准确意思为：用于实现浏览器并不支持的原生API的代码。例如，querySelectorAll是很多现代浏览器都支持的原生Web API，但是有些古老的浏览器并不支持，那么假设有人写了库，只要用了这个库， 你就可以在古老的浏览器里面使用document.querySelectorAll，使用方法跟现代浏览器原生API无异。那么这个库就可以称为Polyfill或者Polyfiller。</p>
 <p><br>
-一个Polyfill是抹平新老浏览器 标准原生API 之间的差距的一种封装，而不是实现自己的API。</p>
+一个Polyfill是抹平新老浏览器 标准原生API 之间的差距的一种封装，而不是实现自己的API。
+一个shim是一个库,它将一个新的API引入到一个旧的环境中,而且仅靠旧环境中已有的手段实现
+一个polyfill就是一个用在浏览器API上的shim.我们通常的做法是先检查当前浏览器是否支持某个API,如果不支持的话就加载对应的polyfill.然后新旧浏览器就都可以使用这个API了.</p>
 <h5 id="Vanilla-JavaScript-（自我感觉可以理解为原生javascript）"><a href="#Vanilla-JavaScript-（自我感觉可以理解为原生javascript）" class="headerlink" title="Vanilla JavaScript （自我感觉可以理解为原生javascript）"></a>Vanilla JavaScript （自我感觉可以理解为原生javascript）</h5><p>在计算机软件领域中，如果你对原生系统没有做任何定制性的修改，就是Vanilla。你把Vailla看成是Pure或者Plain的意思都是可以的。Vanilla JavaScript就是Pure JavaScript的意思。</p>
 </blockquote>
 <h3 id="6-CSS深入理解流体特性和BFC特性下多栏自适应布局，-译文：理解CSS中的块级格式化上下文"><a href="#6-CSS深入理解流体特性和BFC特性下多栏自适应布局，-译文：理解CSS中的块级格式化上下文" class="headerlink" title="6. CSS深入理解流体特性和BFC特性下多栏自适应布局， 译文：理解CSS中的块级格式化上下文"></a><a href="http://www.zhangxinxu.com/wordpress/2015/02/css-deep-understand-flow-bfc-column-two-auto-layout/" target="_blank" rel="external">6. CSS深入理解流体特性和BFC特性下多栏自适应布局，</a><a href="https://segmentfault.com/a/1190000003068557" target="_blank" rel="external"> 译文：理解CSS中的块级格式化上下文</a></h3><blockquote>
@@ -314,7 +317,22 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 </li>
 </ol>
 </blockquote>
-<h3 id="CSS魔法堂：小结一下Box-Model与Positioning-Scheme"><a href="#CSS魔法堂：小结一下Box-Model与Positioning-Scheme" class="headerlink" title="CSS魔法堂：小结一下Box Model与Positioning Scheme"></a><a href="https://www.cnblogs.com/fsjohnhuang/p/5377955.html" target="_blank" rel="external">CSS魔法堂：小结一下Box Model与Positioning Scheme</a></h3>
+<h3 id="7-JS脚本加载中，defer和async的区别"><a href="#7-JS脚本加载中，defer和async的区别" class="headerlink" title="7.JS脚本加载中，defer和async的区别"></a><a href="#">7.JS脚本加载中，defer和async的区别</a></h3><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</span></div><div class="line"></div><div class="line">&lt;script src=<span class="string">"script.js"</span>&gt;&lt;/script&gt;</div><div class="line"></div><div class="line"><span class="comment">// 有 async，加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。</span></div><div class="line"></div><div class="line">&lt;script <span class="keyword">async</span> src=<span class="string">"script.js"</span>&gt;&lt;/script&gt;</div><div class="line"></div><div class="line"><span class="comment">// 有 defer，加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。</span></div><div class="line"></div><div class="line">&lt;script defer src=<span class="string">"myscript.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>然后从实用角度来说呢，首先把所有脚本都丢到 &lt;/body&gt; 之前是最佳实践，因为对于旧浏览器来说这是唯一的优化选择，此法可保证非脚本的其他一切元素能够以最快的速度得到加载和解析。
+<br>
+下图中，蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析
+<img title="async、defer" alt="async、defer" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/useful-articles3.jpeg">
+此图告诉我们一下几个要点:</p>
+<ol>
+<li>defer 和 async 在网络读取（下载）这块儿是一样的，都是异步的（相较于 HTML 解析）;</li>
+<li>它俩的差别在于脚本下载完之后何时执行，显然 defer 是最接近我们对于应用脚本加载和执行的要求的;</li>
+<li>关于 defer，此图未尽之处在于它是按照加载顺序执行脚本的，这一点要善加利用;</li>
+<li>async 则是一个乱序执行的主，反正对它来说脚本的加载和执行是紧紧挨着的，所以不管你声明的顺序如何，只要它加载完了就会立刻执行;</li>
+<li>仔细想想，async 对于应用脚本的用处不大，因为它完全不考虑依赖（哪怕是最低级的顺序执行），不过它对于那些可以不依赖任何脚本或不被任何脚本依赖的脚本来说却是非常合适的;</li>
+</ol>
+</blockquote>
+<h3 id="虚拟DOM实现"><a href="#虚拟DOM实现" class="headerlink" title="虚拟DOM实现"></a>虚拟DOM实现</h3><h3 id="CSS魔法堂：小结一下Box-Model与Positioning-Scheme"><a href="#CSS魔法堂：小结一下Box-Model与Positioning-Scheme" class="headerlink" title="CSS魔法堂：小结一下Box Model与Positioning Scheme"></a><a href="https://www.cnblogs.com/fsjohnhuang/p/5377955.html" target="_blank" rel="external">CSS魔法堂：小结一下Box Model与Positioning Scheme</a></h3>
 
                 <hr>
 
@@ -339,6 +357,23 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 
             </div>
     <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-3
+                col-md-3
+                col-md-offset-0
+                col-md-offset-0
+                hidden-xs	
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
     <!-- Sidebar Container -->
@@ -397,14 +432,16 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
+    // async("https://cdn.bootcss.com/anchor-js/4.1.0/anchor.min.js",function(){
+    //     anchors.options = {
+    //       visible: 'always',
+    //       placement: 'left',
+    //       icon: ''
+    //     };
+    //     // anchors.add();
+    //     // anchors.add('.post-container h1, .post-container h2, .post-container h3, .post-container h4');
+    //     simpleNav();
+    // })
 </script>
 <style>
     /* place left on bigger screen */
@@ -417,6 +454,7 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
         }
     }
 </style>
+
 
 
 
@@ -466,9 +504,7 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 <script src="/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js"></script>
-
-
+<script src="/js/hux-blog.js"></script>
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -533,6 +569,68 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 
 <!-- Side Catalog -->
 
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        console.log(a);
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        // $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: true,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 500,
+            scrollOffset: 0,
+            scrollThreshold: .5,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });    
+    var catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    var catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    navFixed();
+    $(document).on('scroll',navFixed);
+    function navFixed(){ // 根据当前页面滚动情况固定导航栏
+        var scrollHeight = $(document).scrollTop();         
+        if(scrollHeight > catTopDis){
+            if(!$('.catalog-container').hasClass('catalog-fixed')) {
+                $('.catalog-container').addClass('catalog-fixed').css('left',catLeftDis); ;
+            } 
+                
+        } else{
+            if($('.catalog-container').hasClass('catalog-fixed')) {                       
+                $('.catalog-container').removeClass('catalog-fixed').css('left',0); ;
+
+            } 
+        }
+    }
+</script>
 
 
 
