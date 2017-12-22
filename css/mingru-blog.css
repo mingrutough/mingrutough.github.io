@@ -83,12 +83,20 @@ header.intro-header {
 .catalog-container  h5{
         padding-left:40px;
 }
-.catalog-container  li.active, .catalog-container  li.active a{
+.catalog-container  li.h3_nav  a{
+    color: #a0a0a0 !important;
+    font-size: 16px;
+}
+.catalog-container  li.h2_nav  a{
+    color: #000 !important;
+    font-size: 18px;
+    font-weight: bold;
+}
+.catalog-container  li.active, .catalog-container  li.active a, .catalog-container  li a:hover{
     color: #0085a1 !important;
 }
-.catalog-container  li.h3_nav  a{
-    color: #000 !important;
-    font-size: 16px;
+.catalog-container  li a:hover{
+    text-decoration: underline !important;
 }
 .catalog-container .catalog-body {
     max-height: 70vh;
