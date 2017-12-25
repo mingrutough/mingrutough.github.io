@@ -617,6 +617,26 @@ eval()亦可用来解析json string。将相应的字符串转换为对象。常
 </ul>
 </li>
 </ul>
+<h4 id="JavaScript程序的执行"><a href="#JavaScript程序的执行" class="headerlink" title="JavaScript程序的执行"></a>JavaScript程序的执行</h4><blockquote>
+<p>JavaScript的执行有两个阶段，在第一个阶段，载入文档内容，并执行script标签中的代码。当文档载入完成，并且所有脚本执行完成后，JavaScript执行就会进入它的第二阶段。这个阶段是异步的，而且由事件驱动。在事件驱动阶段，web浏览器调用事件处理程序来响应异步发生的事件。核心javascript和客户端javascript都有一个单线程执行模型。脚本和事件处理程序在同一时间只能执行一个，没有并发性。</p>
+</blockquote>
+<h4 id="客户端JavaScript时间线"><a href="#客户端JavaScript时间线" class="headerlink" title="客户端JavaScript时间线"></a>客户端JavaScript时间线</h4><ol>
+<li>Web浏览器创建Document对象，并且开始解析Web页面，解析HTML元素和它的文本内容后添加Element对象和Text节点到文档中。在这个阶段document.readystate属性的值是“loading”；</li>
+<li>当HTML解析器遇到没有async和defer属性的script元素时，它把这些元素添加到文档中，然后执行行内或外部脚本。这些脚本会同步执行，并且在脚本下载和执行时解析器会暂停。这样脚本就可以用document.write()来把文本插入到输入流中。解析器恢复时这些文本会成为文档的一部分。同步脚本通常简单定义函数和注册后面使用的注册事件处理程序，但它们可以遍历和操作文档树，因为在它们执行时已经存在了。这样，同步脚本可以看到它自己的script元素和它们之前的文档内容。</li>
+<li>当解析器遇到设置了async属性的script元素时，它开始下载脚本文件，并继续解析文档。脚本会在它下载完成后尽快执行，但是解析器没有停下来等它下载。</li>
+<li>当文档完成解析，document.readystate属性的值变为“interactive”；</li>
+<li>所有有deffer属性的脚本，会按它们在文档中出现的顺序执行。</li>
+<li>浏览器在Document对象上触发DOMContentLoaded事件。这标志着程序执行从同步脚本执行阶段转换到了异步事件驱动阶段。但要注意，这时可能还有异步脚本没有执行完成。</li>
+<li>这时，文档已经完全解析完成，但是浏览器可能还在等待其他内容载入。如图片。当所有这些内容完成载入时，并且所有异步脚本完成载入和执行，document.readystate属性的值变为“complete”,Web浏览器触发Window对象的load事件。</li>
+<li>此时此刻，会调用异步事件，以异步响应用户输入事件、网络事件等等。</li>
+</ol>
+<h4 id="怪异模式和标准模式"><a href="#怪异模式和标准模式" class="headerlink" title="怪异模式和标准模式"></a>怪异模式和标准模式</h4><blockquote>
+<p>要进行怪异模式和标准模式的特性检测，通常检查document.compatMode属性。如果其值为”CSS1Compat”，则说明浏览器工作在标准模式；如果值为”BackCompat”(或undefined,说明属性根本不存在)，则说明浏览器工作在怪异模式。</p>
+</blockquote>
+<h5 id="IE中的条件注释"><a href="#IE中的条件注释" class="headerlink" title="IE中的条件注释"></a>IE中的条件注释</h5><blockquote>
+<p>IE支持条件注释。下面是HTML中的条件注释的样子。
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if IE 5]&gt;仅IE5.5可见&lt;![endif]--&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!--[if gt IE 5.5]&gt;仅IE 5.5以上可见&lt;![endif]--&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!--[if lt IE 5.5]&gt;仅IE 5.5以下可见&lt;![endif]--&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!--[if gte IE 5.5]&gt;IE 5.5及以上可见&lt;![endif]--&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!--[if lte IE 5.5]&gt;IE 5.5及以下可见&lt;![endif]--&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!--[if !IE 5.5]&gt;非IE 5.5的IE可见&lt;![endif]--&gt;</span></div></pre></td></tr></table></figure></p>
+</blockquote>
 
 
                 <hr>
