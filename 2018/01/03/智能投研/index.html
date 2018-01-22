@@ -13,11 +13,11 @@
 
     <title>
         
-          JavaScript设计模式与开发实践 - 夏明儒的博客 | Mingru&#39;s Blog
+          智能投研 - 夏明儒的博客 | Mingru&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://mingrutough.github.io/2017/11/02/2017-6-29-js-design-patterns/">
+    <link rel="canonical" href="https://mingrutough.github.io/2018/01/03/智能投研/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -175,16 +175,12 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#O&#39;REILLY" title="O&#39;REILLY">O&#39;REILLY</a>
-                        
-                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
-                        
                     </div>
-                    <h1>JavaScript设计模式与开发实践</h1>
-                    <h2 class="subheading">好书都要看</h2>
+                    <h1>智能投研</h1>
+                    <h2 class="subheading">智能投研</h2>
                     <span class="meta">
                         Posted by mingrutough on
-                        2017-11-02
+                        2018-01-03
                     </span>
                 </div>
             </div>
@@ -204,33 +200,102 @@
                 col-md-offset-1                                                
                 post-container">
 
-                <img title="jsPatternCh.jpg" alt="jsPatternCh.jpg" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/jsPatternCh.jpeg">
-<blockquote>
-<p>设计模式的定义是：在面向对象软件设计过程中针对特定问题的简洁而优雅的解决方案。通俗一点说，设计模式是在某种场合下对某个问题的一种解决方案。如果再通俗一点说，设计模式就是给面向对象软件开发中的一些好的设计取个名字。</p>
-</blockquote>
-<h2 id="第一章、面向对象的JavaScript"><a href="#第一章、面向对象的JavaScript" class="headerlink" title="第一章、面向对象的JavaScript"></a>第一章、面向对象的JavaScript</h2><h3 id="动态类型语言和鸭子类型"><a href="#动态类型语言和鸭子类型" class="headerlink" title="动态类型语言和鸭子类型"></a>动态类型语言和鸭子类型</h3><p>编程语言按照数据类型大体可以分为两类，一类是静态类型语言，另一类是动态类型语言。<br></p>
-<ul>
-<li><h4 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言<br></h4>静态类型语言在编译时便已确定变量的类型。<ul>
-<li>优点<br>
-编译时就能发现类型不匹配的错误，编辑器可以帮助我们提前避免错误。其次，如果在程序中明确规定了数据类型，编译器还可以针对这些信息对程序进行一些优化，提高程序执行效率。</li>
-<li>缺点
-迫使程序员依照强契约来编写程序。类型的声明也会增加更多的代码。</li>
+                <h2 id="一、介绍平台"><a href="#一、介绍平台" class="headerlink" title="一、介绍平台"></a>一、介绍平台</h2><h3 id="1、因子、信号和策略"><a href="#1、因子、信号和策略" class="headerlink" title="1、因子、信号和策略"></a>1、因子、信号和策略</h3><ul>
+<li>因子的定义，输出结果、使用场景和使用方式</li>
+<li>信号的定义，输出结果、使用场景和使用方式</li>
+<li>策略的定义，输出结果、使用场景和使用方式</li>
 </ul>
-</li>
-<li><h4 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h4><p>动态型语言的变量类型要到程序运行的时候，待变量被赋予某个值之后，才会具有某种类型。</p>
-<ul>
-<li>优点<br>
-代码量较少，专注于业务逻辑。</li>
-<li>缺点<br>
-无法保证变量类型，可能在程序运行阶段会发生相关的错误。</li>
-</ul>
-</li>
-<li><h4 id="鸭式辩型"><a href="#鸭式辩型" class="headerlink" title="鸭式辩型"></a>鸭式辩型<br></h4><p>利用鸭式辩型的思想，在动态类型语言中可以实现一个原则:面向接口编程，而不是面向实现编程。例如，一个对象若有push和pop方法，并且这些方法提供了正确地实现，它就可以被当做栈来使用。。。</p>
-</li>
-</ul>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态的实际含义是:同一操作作用于不同的对象上面，可以产生不同的解释和不同的执行结果。
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 不变的部分</span></div><div class="line"><span class="keyword">var</span> makeSound = <span class="function"><span class="keyword">function</span>(<span class="params">animal</span>)</span>&#123;</div><div class="line">    animal.sound();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 封装可变的部分</span></div><div class="line"><span class="keyword">var</span> Duck = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">Duck.prototype.sound = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'嘎嘎嘎'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Chicken = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">Chicken.prototype.sound = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'咯ge咯'</span>);</div><div class="line">&#125;</div><div class="line">makeSound(<span class="keyword">new</span> Duck());</div><div class="line">makeSound(<span class="keyword">new</span> Chicken());</div></pre></td></tr></table></figure></p>
-<h4 id="使用继承得到多态效果"><a href="#使用继承得到多态效果" class="headerlink" title="使用继承得到多态效果"></a>使用继承得到多态效果</h4><p>继承通常包括实现继承和接口继承。</p>
+<h3 id="2、平台提供的数据及因子"><a href="#2、平台提供的数据及因子" class="headerlink" title="2、平台提供的数据及因子"></a>2、平台提供的数据及因子</h3><p>目前智能投研平台包括5大类数据：</p>
+<ol>
+<li>股票数据：获取股票相关的数据，包括股票行情、股票分红、股东账户数等；</li>
+<li>基金数据：获取基金相关的数据，包括基金分红信息、基金资产大类配置、基金投资组合明细等；</li>
+<li>指数数据：获取指数相关的数据，包括指数行情、指数成分股权重等；</li>
+<li>财务数据：获取股票相关的数据，包括财务指标表、财务比率指标、财务季度指标等；</li>
+<li>其它数据：反映公司体量的因子，如证券基本信息、交易日历、一致预期数据等；</li>
+</ol>
+<p>目前智能投研平台包括8大类共计72个因子：</p>
+<ol>
+<li>规模因子：反映公司体量的因子，如总市值、流通市值、总资产等；</li>
+<li>质量因子：反映公司营收能力的因子，如净资产收益率、总资产收益率、毛利率等；</li>
+<li>杠杆因子：反映公司偿债及营运能力的因子，如流动比率、速动比率、资产负债率等；</li>
+<li>动量因子：反映股票二级市场滚动收益的因子，如近1个月收益率、近3个月收益率等；</li>
+<li>波动因子：反映股票二级市场波动的因子，如近1个月波动率、近2个月成交额比波动率；</li>
+<li>技术因子：该类别包含主流的技术指标，反映股票量价信息的因子，如5日乖离率、顺势指标、成交量震荡等；</li>
+<li>流动性因子：反映了股票二级市场流动性的因子，如近1个月换手率、买卖循环率等；</li>
+<li>分析师因子：根据分析师一致预期数据计算，体现了分析师对个股趋势预测，如一致预期目标价比收盘价</li>
+</ol>
+<p>下文会详细介绍数据和因子的使用方法，如需了解详细数据列表和调用接口介绍，请前往 研究数据 查看详细的数据介绍。</p>
+<h3 id="3、几个模块"><a href="#3、几个模块" class="headerlink" title="3、几个模块"></a>3、几个模块</h3><p>智能投研平台分为三个模块：工作台、开始研究、模拟组合，默认首页为工作台。
+<img title="polaris_1.png" alt="polaris_1.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/polaris_1.png"></p>
+<p>工作台：因子、信号、策略列表，模拟组合业绩的展示，以及一些快速入口
+<img title="polaris_2.png" alt="polaris_2.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/polaris_2.png"></p>
+<p>开始研究：分为因子管理、信号管理和策略管理，分别对应因子、信号、策略的列表和编辑入口。
+<img title="polaris_3.png" alt="polaris_3.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/polaris_3.png"></p>
+<p>模拟组合：展示策略组合模拟的交易信息，绩效分析功能
+<img title="polaris_4.png" alt="polaris_4.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/polaris_4.png">
+<img title="polaris_5.png" alt="polaris_5.png" src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog//images/polaris_5.png"></p>
+<h2 id="二、策略研究"><a href="#二、策略研究" class="headerlink" title="二、策略研究"></a>二、策略研究</h2><h3 id="1、因子研究"><a href="#1、因子研究" class="headerlink" title="1、因子研究"></a>1、因子研究</h3><h4 id="创建因子"><a href="#创建因子" class="headerlink" title="创建因子"></a>创建因子</h4><p>“因子符号”是您日后写策略时调用该因子的默认符号，需要在因子创建页面约定；
+您可以在“因子描述”一栏对因子的属性进行描述，以便在因子管理页面查看因子的概述。</p>
+<h4 id="提供因子-数据"><a href="#提供因子-数据" class="headerlink" title="提供因子/数据"></a>提供因子/数据</h4><p>“时间窗口”表示
+“默认值”这一列是指代码中调用该数据的代号，可以修改；不同的数据调用名称不能重复。
+“偏移量”是指该数据的日期相对于因子日期的提前量，偏移量默认为0，如用户修改偏移量，则按照修改后的偏移量计算。例：用户设置偏移量=5，用第i-5天的数据，计算出第i天的因子。</p>
+<h4 id="因子信息"><a href="#因子信息" class="headerlink" title="因子信息"></a>因子信息</h4><p>“运行模式”是指代码编辑时</p>
+<p>分为按日循环、按券循环、全量三种方式，
+“因子频率”</p>
+<h4 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h4><p>Context：
+Data：
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">guess_my_number</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        user_input = raw_input(<span class="string">"Enter a positive integer to guess: "</span>)</div><div class="line">        <span class="keyword">if</span> len(user_input)==<span class="number">0</span> <span class="keyword">or</span> <span class="keyword">not</span> user_input.isdigit():</div><div class="line">            <span class="keyword">print</span> <span class="string">"Not a positive integer!"</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            user_input = int(user_input)</div><div class="line">            <span class="keyword">if</span> user_input &gt; n:</div><div class="line">                <span class="keyword">print</span> <span class="string">"Too big ! Try again!"</span></div><div class="line">            <span class="keyword">elif</span> user_input &lt; n:</div><div class="line">                <span class="keyword">print</span> <span class="string">"Too small ! Try again!"</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">print</span> <span class="string">"You win!"</span></div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">guess_my_number(<span class="number">42</span>)</div></pre></td></tr></table></figure></p>
+<p>例子：按日循环模式下，生成因子MA5（五日均线）的代码如下</p>
+<p>因子创建输出结果限制</p>
+<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p>点击“运行”会出现预览结果，看看程序有没有bug；
+“日期选择”用于修改图表展示的回测区间；
+结果预览</p>
+<h4 id="保存-发布"><a href="#保存-发布" class="headerlink" title="保存/发布"></a>保存/发布</h4><p>保存就是保存为草稿，不会自动运行。
+发布是按照因子频率自动跑，并且会出现在我的因子中，供编写因子、信号、策略的时候调用。</p>
+<h3 id="2、信号研究"><a href="#2、信号研究" class="headerlink" title="2、信号研究"></a>2、信号研究</h3><h4 id="创建信号"><a href="#创建信号" class="headerlink" title="创建信号"></a>创建信号</h4><p>信号名称：
+信号符号
+信号类型：择时、择股
+信号描述</p>
+<h4 id="提供因子-数据-1"><a href="#提供因子-数据-1" class="headerlink" title="提供因子/数据"></a>提供因子/数据</h4><p>时间窗口
+默认值
+偏移量</p>
+<h4 id="信号信息"><a href="#信号信息" class="headerlink" title="信号信息"></a>信号信息</h4><p>股票池
+运行模式：按日循环、全量
+信号频率</p>
+<h4 id="代码编写-1"><a href="#代码编写-1" class="headerlink" title="代码编写"></a>代码编写</h4><p>Context
+Data
+输出限制</p>
+<h4 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h4><p>输出结果类型限制：择时、择股
+运行就是预览结果，看看程序有没有bug
+回测表格
+回测图表</p>
+<h4 id="保存-发布-1"><a href="#保存-发布-1" class="headerlink" title="保存/发布"></a>保存/发布</h4><p>保存就是保存为草稿，不会自动运行
+发布是按照信号频率自动跑，并且可以在策略中调用</p>
+<h3 id="3、策略研究"><a href="#3、策略研究" class="headerlink" title="3、策略研究"></a>3、策略研究</h3><h4 id="创建策略"><a href="#创建策略" class="headerlink" title="创建策略"></a>创建策略</h4><p>向导式、代码式</p>
+<h4 id="策略模型"><a href="#策略模型" class="headerlink" title="策略模型"></a>策略模型</h4><p>股票池
+调仓频率
+运行模式
+交易初始金额</p>
+<h4 id="向导式策略开发"><a href="#向导式策略开发" class="headerlink" title="向导式策略开发"></a>向导式策略开发</h4><p>选择择股信号，叠加择时信号，输出结果
+开始回测
+预览策略池</p>
+<h4 id="代码式策略开发"><a href="#代码式策略开发" class="headerlink" title="代码式策略开发"></a>代码式策略开发</h4><p>使用因子、数据（同上）
+代码编写（同上）
+输出结果类型限制
+策略回测：初期金额、选择基准、输出结果</p>
+<h4 id="保存策略-开始模拟交易"><a href="#保存策略-开始模拟交易" class="headerlink" title="保存策略/开始模拟交易"></a>保存策略/开始模拟交易</h4><p>保存策略就是保存为草稿，不会自动运行；在策略管理界面可以进行回测及查看模拟组合详情。
+点击开始模拟交易，会将目前编辑好的策略加入模拟交易列表中，每天进行模拟交易，并返回交易详情和绩效分析。</p>
+<h3 id="4、模拟交易"><a href="#4、模拟交易" class="headerlink" title="4、模拟交易"></a>4、模拟交易</h3><h4 id="创建模拟组合"><a href="#创建模拟组合" class="headerlink" title="创建模拟组合"></a>创建模拟组合</h4><p>如何创建
+注意点：开始时间为策略开始运行的时间</p>
+<h4 id="模拟组合导入"><a href="#模拟组合导入" class="headerlink" title="模拟组合导入"></a>模拟组合导入</h4><p>导入模板（下载、时间、券代码、仓位类型）可以下载导入末班，按照模板的格式整理策略组合的
+是否增量</p>
+<h4 id="交易手续费设置"><a href="#交易手续费设置" class="headerlink" title="交易手续费设置"></a>交易手续费设置</h4><p>股票：0.3%
+基金：500万以下，0.15%；500万以上，1000块</p>
+<h4 id="未成交交易"><a href="#未成交交易" class="headerlink" title="未成交交易"></a>未成交交易</h4><p>未成交原因：钱不够、股票停牌等
+未成交的交易形成队列，等条件满足了再逐个交易</p>
+<h4 id="查看模拟交易信息"><a href="#查看模拟交易信息" class="headerlink" title="查看模拟交易信息"></a>查看模拟交易信息</h4><p>组合信息、持仓分析、近期交易、组合表现、组合仓位</p>
+<h3 id="5、绩效归因"><a href="#5、绩效归因" class="headerlink" title="5、绩效归因"></a>5、绩效归因</h3><h4 id="择时归因"><a href="#择时归因" class="headerlink" title="择时归因"></a>择时归因</h4><h4 id="行业归因"><a href="#行业归因" class="headerlink" title="行业归因"></a>行业归因</h4><p>brinson</p>
+<h4 id="个股归因"><a href="#个股归因" class="headerlink" title="个股归因"></a>个股归因</h4><p>brinson</p>
 
 
                 <hr>
@@ -239,13 +304,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/11/06/ruanyifeng-webpack/" data-toggle="tooltip" data-placement="top" title="Webpack各种资源学习">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/10/30/360video-css/" data-toggle="tooltip" data-placement="top" title="奇舞前端特训营视频CSS篇">Next Post &rarr;</a>
+                            <a href="/2017/12/13/ruanyifeng-articals/" data-toggle="tooltip" data-placement="top" title="阮一峰老师博客阅读记录">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -289,10 +350,6 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#O&#39;REILLY" title="O&#39;REILLY">O&#39;REILLY</a>
-                        
-                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
-                        
                     </div>
                 </section>
                 

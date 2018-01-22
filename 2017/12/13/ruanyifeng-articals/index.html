@@ -399,6 +399,24 @@ ES6模块不是对象，而是通过export命令显式指定输出的代码，�
 </blockquote>
 </li>
 </ul>
+<h3 id="4-Git工作流程"><a href="#4-Git工作流程" class="headerlink" title="4.Git工作流程"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="external">4.Git工作流程</a></h3><blockquote>
+<p>文章将涉及三种广泛使用的工作流程: Git flow 、Github flow 、Gitlab flow。这三种工作流程都有一个共同点: 都采用”功能驱动式开发”。它指的是，需求是开发的起点，现有需求再有功能分支(feature branch)或者补丁分支(hotfix branch)。完成开发后，该分支就合并到主分支，然后被删除。</p>
+</blockquote>
+<h4 id="Git-flow"><a href="#Git-flow" class="headerlink" title="Git  flow"></a>Git  flow</h4><p>首先，项目存在两个长期分支:</p>
+<ul>
+<li>主分支 master</li>
+<li>开发分支 develop</li>
+</ul>
+<p>前者用于存放对外发布的版本，任何时候在这个分支拿到的，都是稳定的分布版；后者用于日常开发，存放最新的开发版。其次，项目存在三种短期分支。</p>
+<ul>
+<li>功能分支(feature branch)</li>
+<li>补丁分支(hotfix branch)</li>
+<li>预发分支(release branch)</li>
+</ul>
+<p>一旦完成开发，它们就被合并进develop或master，然后被删除。
+评价: 优点是清晰可控，缺点是相对复杂，同时需要维护两个长期分支。更大的问题是这个模式是基于”版本发布”的，但是，很多网站项目是”持续发布”，代码一有变动，就部署一次。这是，master分支和develop分支的差别不大。</p>
+<h4 id="Github-flow"><a href="#Github-flow" class="headerlink" title="Github flow"></a>Github flow</h4><p>Github flow 是Git flow的简化版，专门配合’持续发布’。<br>
+它只有一个长期分支，就是master</p>
 
 
                 <hr>
@@ -406,6 +424,10 @@ ES6模块不是对象，而是通过export命令显式指定输出的代码，�
                 
 
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/01/03/智能投研/" data-toggle="tooltip" data-placement="top" title="智能投研">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
@@ -542,7 +564,7 @@ ES6模块不是对象，而是通过export命令显式指定输出的代码，�
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingru’s Blog 2017 
+                    Copyright &copy; Mingru’s Blog 2018 
                     <br>
                     <!--Theme by <a href="http://huangxuan.me">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
