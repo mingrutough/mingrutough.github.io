@@ -350,6 +350,32 @@ utf-8就是互联网上使用最广的一种Unicode的实现方式。其他实�
 <h4 id="DOM-based-or-local-XSS（基于DOM或本地的XSS攻击）"><a href="#DOM-based-or-local-XSS（基于DOM或本地的XSS攻击）" class="headerlink" title="DOM-based or local XSS（基于DOM或本地的XSS攻击）"></a>DOM-based or local XSS（基于DOM或本地的XSS攻击）</h4><p>基于DOM或本地的XSS攻击。一般是提供一个免费的wifi，但是提供免费wifi的网关会往你访问的任何页面插入一段脚本或者是直接返回一个钓鱼页面，从而植入恶意脚本。这种直接存在于页面，无须经过服务器返回就是基于本地的XSS攻击。</p>
 <p>措施： 使用HTTPS。</p>
 </blockquote>
+<h3 id="9-CSS3-Transitions-Transforms和Animation使用简介与应用展示"><a href="#9-CSS3-Transitions-Transforms和Animation使用简介与应用展示" class="headerlink" title="9.CSS3 Transitions, Transforms和Animation使用简介与应用展示"></a><a href="http://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/" target="_blank" rel="external">9.CSS3 Transitions, Transforms和Animation使用简介与应用展示</a></h3><blockquote>
+<p>CSS3动画相关的几个属性是：transition, transform, animation；可以理解为过渡，变换，动画。</p>
+<h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><p>其作用可以概述为: <strong>平滑的改变CSS的值</strong> 
+transiton属性是下面几个属性的缩写：</p>
+<ul>
+<li>transition-property。指定过渡的css属性值。比如width, height, opacity等。</li>
+<li>transition-duration。指定这个过渡的持续时间。</li>
+<li>transition-delay。延迟过渡时间。</li>
+<li>transition-timing-function。指定过渡动画缓动类型，有ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()。其中，linear线性过度，ease-in由慢到快，ease-out由快到慢，ease-in-out由慢到快在到慢。</li>
+</ul>
+<p>就跟css2的background属性一样，通常会把transition的属性合并来写。</p>
+<h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><p>transform指变换，包括拉伸，压缩，旋转，偏移。
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.trans_skew</span> &#123; <span class="attribute">transform</span>: <span class="built_in">skew</span>(35deg); &#125;</div><div class="line"><span class="selector-class">.trans_scale</span> &#123; <span class="attribute">transform</span>:<span class="built_in">scale</span>(1, 0.5); &#125;</div><div class="line"><span class="selector-class">.trans_rotate</span> &#123; <span class="attribute">transform</span>:<span class="built_in">rotate</span>(45deg); &#125;</div><div class="line"><span class="selector-class">.trans_translate</span> &#123; <span class="attribute">transform</span>:<span class="built_in">translate</span>(10px, 20px); &#125;</div></pre></td></tr></table></figure></p>
+<p>transform属性配合上transition的过渡属性，会产生很好的效果。</p>
+<h4 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h4><p>CSS animation属性是如下属性的一个简写属性形式: </p>
+<ul>
+<li>animation-name, 规定需要绑定到选择器的keyframe名称。</li>
+<li>animation-duration, 规定完成动画所花费时间。</li>
+<li>animation-timing-function, 规定动画的速度曲线。</li>
+<li>animation-delay, 规定动画开始之前的延迟。</li>
+<li>animation-iteration-count, 规定动画应该播放的次数。</li>
+<li>animation-direction, 规定是否应该轮流反向播放动画。</li>
+</ul>
+<p>其中，@keyframes规则用于创建动画。在@keyframes中规定某项CSS样式，就能创建有当前样式逐渐改为新样式的动画效果。其中可以使用百分比或者关键字’from’和’to’来规定变化发生的时间。
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line">@<span class="keyword">keyframes</span> myfirst</div><div class="line">&#123;</div><div class="line"><span class="selector-tag">from</span> &#123;<span class="attribute">background</span>: red;&#125;</div><div class="line"><span class="selector-tag">to</span> &#123;<span class="attribute">background</span>: yellow;&#125;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">keyframes</span> myfirst</div><div class="line">&#123;</div><div class="line">0%   &#123;<span class="attribute">background</span>: red;&#125;</div><div class="line">25%  &#123;<span class="attribute">background</span>: yellow;&#125;</div><div class="line">50%  &#123;<span class="attribute">background</span>: blue;&#125;</div><div class="line">100% &#123;<span class="attribute">background</span>: green;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
 <h3 id="CSS魔法堂：小结一下Box-Model与Positioning-Scheme"><a href="#CSS魔法堂：小结一下Box-Model与Positioning-Scheme" class="headerlink" title="CSS魔法堂：小结一下Box Model与Positioning Scheme"></a><a href="https://www.cnblogs.com/fsjohnhuang/p/5377955.html" target="_blank" rel="external">CSS魔法堂：小结一下Box Model与Positioning Scheme</a></h3>
 
                 <hr>
