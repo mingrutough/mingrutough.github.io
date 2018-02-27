@@ -455,7 +455,7 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
     <!-- Sidebar Container -->
 
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-8 
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -691,6 +691,9 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
         });
     });    
 
+    function catalogPosition(){
+        
+    };
     var catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
     var catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
     navFixed();
@@ -709,6 +712,10 @@ CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后�
             } 
         }
     }
+    // $(window).on('resize',function(){
+    //     catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    //     catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    // });
 </script>
 
 

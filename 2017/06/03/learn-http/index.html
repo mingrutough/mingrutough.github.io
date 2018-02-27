@@ -650,7 +650,7 @@ TCP的数据是通过名为IP分组（或IP数据报）的小数据块来发送�
     <!-- Sidebar Container -->
 
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-8 
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -884,6 +884,9 @@ TCP的数据是通过名为IP分组（或IP数据报）的小数据块来发送�
         });
     });    
 
+    function catalogPosition(){
+        
+    };
     var catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
     var catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
     navFixed();
@@ -902,6 +905,10 @@ TCP的数据是通过名为IP分组（或IP数据报）的小数据块来发送�
             } 
         }
     }
+    // $(window).on('resize',function(){
+    //     catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    //     catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    // });
 </script>
 
 

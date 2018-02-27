@@ -697,6 +697,10 @@ HTMLElement对象和其子类型定义了一些属性，它们对应于元素的
 </li>
 </ul>
 <p>textContent属性就是将指定元素的所有后代Text节点简单的串联在一起。</p>
+<h3 id="文档和元素的几何形状和滚动"><a href="#文档和元素的几何形状和滚动" class="headerlink" title="文档和元素的几何形状和滚动"></a>文档和元素的几何形状和滚动</h3><h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><h4 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h4><ul>
+<li>表单事件<br>
+当提交表单或重置表单时form元素会分别触发submit事件和reset事件。</li>
+</ul>
 
 
                 <hr>
@@ -744,7 +748,7 @@ HTMLElement对象和其子类型定义了一些属性，它们对应于元素的
     <!-- Sidebar Container -->
 
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-8 
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -978,6 +982,9 @@ HTMLElement对象和其子类型定义了一些属性，它们对应于元素的
         });
     });    
 
+    function catalogPosition(){
+        
+    };
     var catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
     var catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
     navFixed();
@@ -996,6 +1003,10 @@ HTMLElement对象和其子类型定义了一些属性，它们对应于元素的
             } 
         }
     }
+    // $(window).on('resize',function(){
+    //     catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    //     catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    // });
 </script>
 
 
