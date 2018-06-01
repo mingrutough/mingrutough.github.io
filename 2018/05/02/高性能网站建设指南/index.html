@@ -13,11 +13,11 @@
 
     <title>
         
-          About - 夏明儒的博客 | Mingru&#39;s Blog
+          高性能网站建设指南 - 夏明儒的博客 | Mingru&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://mingrutough.github.io/about/">
+    <link rel="canonical" href="https://mingrutough.github.io/2018/05/02/高性能网站建设指南/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -157,184 +157,132 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/about-bg.jpeg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://mingrutough.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/home-bg.jpeg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>About</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading"></span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                          <a class="tag" href="/tags/#O&#39;REILLY" title="O&#39;REILLY">O&#39;REILLY</a>
+                        
+                    </div>
+                    <h1>高性能网站建设指南</h1>
+                    <h2 class="subheading">好书都要看</h2>
+                    <span class="meta">
+                        Posted by mingrutough on
+                        2018-05-02
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <div class="about-wrap">
-    <div class="header-wrap">
-        <div class="back-img-wrap"></div>
-        <div class="info-wrap">
-            <div class="circle-wrap">
-                <img src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/mingru.jpg" alt="">
-            </div>
-            <div class="details-wrap">
-                <div class="name">夏明儒</div>
-                <div class="education">
-                    <img src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/school-icon-ustc.png" alt="">
-                    <div class="study-details border-bottom">
-                        <div class="school-name">中国科学技术大学</div>
-                        <div class="school-time">2014年 - 2017年</div>
-                    </div>
-                </div>
-                <div class="education">
-                    <img src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/school-icon-hfut.png" alt="">
-                    <div class="study-details">
-                        <div class="school-name">合肥工业大学</div>
-                        <div class="school-time">2010年 - 2014年</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                col-lg-8
+                col-md-8
+                col-md-offset-1
+                col-md-offset-1                                                
+                post-container">
+
+                <h2 id="规则一：减少HTTP请求"><a href="#规则一：减少HTTP请求" class="headerlink" title="规则一：减少HTTP请求"></a>规则一：减少HTTP请求</h2><h3 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h3><p>通过合并图片减少HTTP请求。而且它还降低了体积大小。</p>
+<h3 id="内联图片。"><a href="#内联图片。" class="headerlink" title="内联图片。"></a>内联图片。</h3><p>通过使用data:URL模式可以在web页面中包含图片但无需任何额外的HTTP请求。其格式如下:<br>
+data:[mediatype][;base64],data。<br> 
+这种方式多用于内联图片，但它可以用在任何需要制定URL的地方，包括script和a标签。<br>
+其缺点是base64编码会增加图片的大小。</p>
+<h3 id="合并脚本和样式表"><a href="#合并脚本和样式表" class="headerlink" title="合并脚本和样式表"></a>合并脚本和样式表</h3><p>每个脚本或者样式表都会导致一个额外的http请求。适当合并的好处不言而喻。</p>
+<h2 id="规则二：使用内容发布网络-CDN"><a href="#规则二：使用内容发布网络-CDN" class="headerlink" title="规则二：使用内容发布网络(CDN)"></a>规则二：使用内容发布网络(CDN)</h2><p>性能黄金法则介绍了正确部署服务器内容的第一步:</p>
+<blockquote>
+<p>只有10%-20%的最终用户响应时间花在了下载HTML文档上，其余的80%-90%的时间花在了下载页面中的所有组件上。
+如果应用程序Web服务器离用户更近，则一个http请求的响应时间将缩短。另一方面，如果组件web服务器离用户更近，则多个http请求的响应时间将缩短。</p>
+<h3 id="内容发布网络-CDN"><a href="#内容发布网络-CDN" class="headerlink" title="内容发布网络(CDN)"></a>内容发布网络(CDN)</h3><p>CDN是一组分布在多个不同地理位置的web服务器，用于更加有效地向用户发布内容。CDN用于发布静态内容，如图片、脚本、样式表和flash。<br>
+优点：CDN上部署的资源用户在访问的时候会就近加载。极大提高速度。而且浏览器对于同一域名的并发请求是有数量限制的。使用CDN能很好地解决这个问题。</p>
+</blockquote>
 
 
+                <hr>
 
-
-
-
-
-
-
-                <!-- 如果开启评论功能 -->
                 
-                    <hr>
 
+                <ul class="pager">
                     
-
+                        <li class="previous">
+                            <a href="/2018/06/01/开发踩坑合集/" data-toggle="tooltip" data-placement="top" title="开发过程中踩坑记录">&larr; Previous Post</a>
+                        </li>
                     
-
-
                     
-
+                        <li class="next">
+                            <a href="/2017/12/13/ruanyifeng-articals/" data-toggle="tooltip" data-placement="top" title="阮一峰老师博客阅读记录">Next Post &rarr;</a>
+                        </li>
                     
+                </ul>
 
-
+                
 
                 
 
             </div>
-    <!-- Sidebar Container -->
+    <!-- Side Catalog Container -->
+        
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
+                col-lg-3
+                col-md-3
+                col-md-offset-0
+                col-md-offset-0
+                hidden-xs	
                 sidebar-container
-            ">
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                       
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
-                            
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="8">JavaScript</a>
-                            
-                        
-                            
-                            <a href="/tags/#O&#39;REILLY" title="O&#39;REILLY" rel="5">O&#39;REILLY</a>
-                            
-                        
-                            
-                            <a href="/tags/#http" title="http" rel="1">http</a>
-                            
-                        
-                            
-                            <a href="/tags/#前端路由" title="前端路由" rel="1">前端路由</a>
-                            
-                        
-                            
-                            <a href="/tags/#html" title="html" rel="2">html</a>
-                            
-                        
-                            
-                            <a href="/tags/#css" title="css" rel="2">css</a>
-                            
-                        
-                            
-                            <a href="/tags/#Webpack" title="Webpack" rel="1">Webpack</a>
-                            
-                        
-                            
-                            <a href="/tags/#前端构建工具" title="前端构建工具" rel="1">前端构建工具</a>
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#大牛博客" title="大牛博客" rel="1">大牛博客</a>
-                            
-                        
-                            
-                            <a href="/tags/#工作" title="工作" rel="1">工作</a>
-                            
+                          <a class="tag" href="/tags/#O&#39;REILLY" title="O&#39;REILLY">O&#39;REILLY</a>
                         
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="http://outqqzk4u.bkt.clouddn.com/img/study/github_blog/mingru.jpg" />
-                        
-
-                        
-                            <p>初衷是通过写东西来强化学习中知识点的应用和吸收，万一以后能够对其他人产生帮助就棒棒了。</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-
-                            
-
-                            
-
-                            
-                            
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -345,9 +293,54 @@
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    // async("https://cdn.bootcss.com/anchor-js/4.1.0/anchor.min.js",function(){
+    //     anchors.options = {
+    //       visible: 'always',
+    //       placement: 'left',
+    //       icon: ''
+    //     };
+    //     // anchors.add();
+    //     // anchors.add('.post-container h1, .post-container h2, .post-container h3, .post-container h4');
+    //     simpleNav();
+    // })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
 
 
     <!-- Footer -->
@@ -460,6 +453,77 @@
 
 
 <!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        console.log(a);
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        // $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: true,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 500,
+            scrollOffset: 0,
+            scrollThreshold: .5,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });    
+
+    function catalogPosition(){
+        
+    };
+    var catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    var catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    navFixed();
+    $(document).on('scroll',navFixed);
+    function navFixed(){ // 根据当前页面滚动情况固定导航栏
+        var scrollHeight = $(document).scrollTop();         
+        if(scrollHeight > catTopDis){
+            if(!$('.catalog-container').hasClass('catalog-fixed')) {
+                $('.catalog-container').addClass('catalog-fixed').css('left',catLeftDis); ;
+            } 
+                
+        } else{
+            if($('.catalog-container').hasClass('catalog-fixed')) {                       
+                $('.catalog-container').removeClass('catalog-fixed').css('left',0); ;
+
+            } 
+        }
+    }
+    // $(window).on('resize',function(){
+    //     catTopDis = $('.catalog-container').offset().top; // 导航距离顶部距离(position不为fixed时) 
+    //     catLeftDis = $('.catalog-container').offset().left; // 导航距离顶部距离(position不为fixed时)  
+    // });
+</script>
 
 
 

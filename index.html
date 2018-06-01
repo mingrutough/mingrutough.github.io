@@ -100,7 +100,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -114,7 +114,7 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     -->
@@ -239,6 +239,56 @@
     <p class="post-meta">
         Posted by mingrutough on
         2017-10-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/06/01/开发踩坑合集/">
+        <h2 class="post-title">
+            开发过程中踩坑记录
+        </h2>
+        <h3 class="post-subtitle">
+            不踩不知道，踩了不能忘
+        </h3>
+        <div class="post-content-preview">
+            1.vue实现每次点击导航栏重载组件场景：项目中有一个页面是从导航栏进入，进入后该页面还有若干子tab页面可切换展示。需求是每一次点击该页面对应的导航都重新刷新页面。由于vue的router机理问题，当路由不发生变化时，其对应的组件不会重新加载。于是有了以下的黑方法。
+
+
+window.location.reload()
+ 简单粗暴，但是效果太差，相当与按了f5，整个页面重新加载，完全丢失了......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingrutough on
+        2018-06-01
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/05/02/高性能网站建设指南/">
+        <h2 class="post-title">
+            高性能网站建设指南
+        </h2>
+        <h3 class="post-subtitle">
+            好书都要看
+        </h3>
+        <div class="post-content-preview">
+            规则一：减少HTTP请求CSS Sprites通过合并图片减少HTTP请求。而且它还降低了体积大小。
+内联图片。通过使用data:URL模式可以在web页面中包含图片但无需任何额外的HTTP请求。其格式如下:
+data:[mediatype][;base64],data。 
+这种方式多用于内联图片，但它可以用在任何需要制定URL的地方，包括script和a标签。
+其缺点是base64编码会增......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingrutough on
+        2018-05-02
     </p>
 
 </div>
@@ -410,37 +460,16 @@ js中提供了可以包含在字符串中的转义序列，以创建不能直接
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2017/06/03/learn-http/">
-        <h2 class="post-title">
-            http权威指南学习笔记
-        </h2>
-        <h3 class="post-subtitle">
-            要成为一个合格的前端开发者，这个要啃
-        </h3>
-        <div class="post-content-preview">
-            
-第一章 HTTP概述
-HTTP(Hypertext Transfer Protocol,超文本传输协议)是在万维网上进行通信时所使用的协议方案。HTTP有很多应用，但最著名的是用于Web浏览器和Web服务器之间的双工通信。
-
-媒体类型因特网上有数千种不同的的数据类型，http仔细地给每种要通过web传输的对象都打上了名为MIME类型的数据格式标签。web服务器会为所有http对象数据附加一......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingrutough on
-        2017-06-03
-    </p>
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
 
 <ul class="pager">
     
+    
+        <li class="next">
+            <a href="/page/2/">Older Posts &rarr;</a>
+        </li>
     
 </ul>
 
@@ -466,15 +495,15 @@ HTTP(Hypertext Transfer Protocol,超文本传输协议)是在万维网上进行�
                     <div class="tags">
                         
                             
+                            <a href="/tags/#JavaScript" title="JavaScript" rel="8">JavaScript</a>
+                            
+                        
+                            
+                            <a href="/tags/#O&#39;REILLY" title="O&#39;REILLY" rel="5">O&#39;REILLY</a>
+                            
+                        
+                            
                             <a href="/tags/#http" title="http" rel="1">http</a>
-                            
-                        
-                            
-                            <a href="/tags/#O&#39;REILLY" title="O&#39;REILLY" rel="4">O&#39;REILLY</a>
-                            
-                        
-                            
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="7">JavaScript</a>
                             
                         
                             
@@ -490,8 +519,6 @@ HTTP(Hypertext Transfer Protocol,超文本传输协议)是在万维网上进行�
                             
                         
                             
-                        
-                            
                             <a href="/tags/#Webpack" title="Webpack" rel="1">Webpack</a>
                             
                         
@@ -500,7 +527,13 @@ HTTP(Hypertext Transfer Protocol,超文本传输协议)是在万维网上进行�
                             
                         
                             
+                        
+                            
                             <a href="/tags/#大牛博客" title="大牛博客" rel="1">大牛博客</a>
+                            
+                        
+                            
+                            <a href="/tags/#工作" title="工作" rel="1">工作</a>
                             
                         
                     </div>
