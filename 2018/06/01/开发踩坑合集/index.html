@@ -100,13 +100,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -115,6 +108,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     -->
@@ -213,10 +213,11 @@
 <li>让组件知道何时点击了导航。<br>
 vue中路由参数或查询的改变不会触发进入或离开导航的守卫，这样我们就可以放心大胆的在地址后面加上例如这样的query。query: {t: (new Date()).getTime()}此时可以通过观察$route对象变化，或者使用组件内守卫beforeRouteUpdate来监测用户点击了导航，这样我们就可以编写组件的销毁和重载逻辑了。
 2.组件销毁以及重载的时机。
-组件的销毁需要时间，所以在将keep设为false后，需要等一会儿再将其变为true。可使用setTimeout来实现。this.$nextTick好像不起作用</li>
+组件的销毁需要时间，所以在将keep设为false后，需要等一会儿再将其变为true。可使用setTimeout来实现。this.$nextTick好像不起作用（但是它对设置在router-view上的v-if起作用）。</li>
 </ol>
 </li>
 </ol>
+<h1 id="2-js实现将文本内容复制到剪切板"><a href="#2-js实现将文本内容复制到剪切板" class="headerlink" title="2.js实现将文本内容复制到剪切板."></a>2.js实现将文本内容复制到剪切板.</h1><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">copyToClipboard(text) &#123;</div><div class="line">  <span class="keyword">const</span> textArea = <span class="built_in">document</span>.createElement(<span class="string">'textarea'</span>);</div><div class="line">  textArea.style.position = <span class="string">'fixed'</span>;</div><div class="line">  textArea.style.top = <span class="string">'0'</span>;</div><div class="line">  textArea.style.left = <span class="string">'0'</span>;</div><div class="line">  textArea.style.width = <span class="string">'2em'</span>;</div><div class="line">  textArea.style.height = <span class="string">'2em'</span>;</div><div class="line">  textArea.style.padding = <span class="string">'0'</span>;</div><div class="line">  textArea.style.border = <span class="string">'none'</span>;</div><div class="line">  textArea.style.outline = <span class="string">'none'</span>;</div><div class="line">  textArea.style.boxShadow = <span class="string">'none'</span>;</div><div class="line">  textArea.style.background = <span class="string">'transparent'</span>;</div><div class="line">  textArea.value = text;</div><div class="line">  <span class="built_in">document</span>.body.appendChild(textArea);</div><div class="line">  textArea.select();</div><div class="line"></div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">const</span> successful = <span class="built_in">document</span>.execCommand(<span class="string">'copy'</span>);</div><div class="line">    <span class="keyword">const</span> msg = successful ? <span class="string">'成功复制到剪贴板'</span> : <span class="string">'该浏览器不支持点击复制到剪贴板'</span>;</div><div class="line">    Message(&#123;</div><div class="line">      type: <span class="string">'success'</span>,</div><div class="line">      message: msg,</div><div class="line">      showClose: <span class="literal">true</span>,</div><div class="line">    &#125;);</div><div class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">    Message(&#123;</div><div class="line">      type: <span class="string">'error'</span>,</div><div class="line">      message: <span class="string">'该浏览器不支持点击复制到剪贴板'</span>,</div><div class="line">      showClose: <span class="literal">true</span>,</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">document</span>.body.removeChild(textArea);</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
 
 
                 <hr>
